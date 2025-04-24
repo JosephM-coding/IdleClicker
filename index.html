@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <div class="left-container">
+            <div class="left-container-header">
+                <h1>Mail Clicker!</h1>
+            </div>
+            <div class="left-container-inners" id="leftContainerInners">
+                <div class="Clicker-display" id="clickerDisplay">
+                    <img src="SpinningPlanet.gif" id="Clickerimg" onclick="enlargeItem(this)" style="border-radius: 100px; width: 50%; height: 50%;"> 
+                </div>
+            </div>
+        </div>
+        <div class="cloudWall-1">
+            
+        </div>
+        <div class="middle-container">
+            <div class="middle-container-header">
+                <h1>User Interface</h1>
+            </div>
+            <div class="middle-container-inners">
+                <div class="CashCount-box">
+                    <p class="CashCount">Cash: <span id="cashCount">...</span></p>
+                </div>
+                
+            </div>
+        </div>
+        <div class="cloudWall-2">
+            
+        </div>
+        <div class="right-container">
+            <div class="right-container-header">
+                <h1>Upgrades</h1>
+            </div>
+            <div class="right-container-inners">
+                <div id="firstUpgrade"><span> +1 per click</span><span id="FirstCost"></span></div>
+                <div id="secondUpgrade"><span> + .2 multiplier</span><span id="SecondCost"></span></div>
+                <div id="thirdUpgrade"><span> + 1 autoclick</span><span id="ThirdCost"></span></div>
+                <div id="fourthUpgrade"><span>+5 per click</span><span id="FourthCost"></span></div>
+                <div>Fith:</div>
+                <div>Sixth:</div>
+                <div>Seventh:</div>
+                <div>Eighth:</div>
+                <div>Ninth:</div>
+                <div>Tenth:</div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

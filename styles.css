@@ -1,0 +1,124 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+.game-container{
+    display: grid;
+    grid-template-columns: 1fr 2% 1fr 2% 1fr;
+    height: 800px;
+    background-color: black;
+}
+.cloudWall-1{
+    background-image: url(fallingStars.gif);
+    background-repeat: repeat-y;
+}
+.cloudWall-2{
+    background-image: url(fallingStars.gif);
+    background-repeat: repeat-y;
+}
+/* Left Container Contents */
+.left-container {
+    grid-column: 1;
+    height:100%;
+    border: 1px solid white;
+}
+.left-container-header{
+    display: flex;
+    justify-content: center;
+    background-color: powderblue;
+    height: 10%;
+    text-align: center;
+    align-items: center; 
+}
+.left-container-inners{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90%;
+    background-image: url(giphy.gif);
+}
+.Clicker-display{
+    /* border: 1px solid black; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    rotate: 10deg;
+    animation: tilt 8s infinite ease-in-out;
+    transform-origin: center;
+    transition: transform 0.3s ease;
+    
+}
+
+@keyframes tilt {
+    0%   { transform: rotate(0deg); }
+    25%  { transform: rotate(10deg); }
+    50%  { transform: rotate(0deg); }
+    75%  { transform: rotate(10deg); }
+    100% { transform: rotate(0deg); }
+}
+
+.clicker-img{
+    transition: transform 0.001s ease;
+}
+/* Middle Container Contents */
+.middle-container{
+ grid-column: 3;
+ border: 1px solid white;
+}
+.middle-container-header{
+    display: flex;
+    justify-content: center;
+    background-color: powderblue;
+    height: 10%;
+    text-align: center;
+    align-items: center; 
+}
+/* .middle-container-inners{
+     
+} */
+.CashCount-box{
+    background-color: darkgreen;
+    margin: 5px 10px 5px 10px;
+    padding: 10px;
+    border: 3px solid lightgreen;
+}
+.CashCount{
+    font-size: 20px;
+    color: white;
+    font-weight: bold;
+}
+
+
+/* Right Container COntents */
+.right-container{
+    grid-column: 5;
+    border: 1px solid white;
+}
+.right-container-header{
+    display: flex;
+    justify-content: center;
+    background-color: powderblue;
+    height: 10%;
+    text-align: center;
+    align-items: center; 
+}
+
+.right-container-inners{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: max-content;
+}
+.right-container-inners div{
+    background-color: powderblue;
+    color: blue;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;    
+    border: 1px solid white;
+    width: 80%;
+    height: 50px;
+    padding: 3px;
+    margin: 3px 3px 3px 3px;
+}
