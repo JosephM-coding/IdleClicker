@@ -1,0 +1,174 @@
+html{
+    overflow-y: hidden;
+}
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    background-image: url(FallingStars3.gif);
+    background-repeat: repeat;
+    /* background-size: cover; */
+}
+.game-container{
+    display: grid;
+    grid-template-columns: 1fr 2% 1fr 2% 1fr;
+    margin: 10px 10px 10px 10px;
+    height: 60%;
+}
+/* Left Container Contents */
+.left-container {
+    grid-column: 1;
+    height:100%;
+    border: 1px solid white;
+    background-color: black;
+}
+.left-container-header{
+    display: flex;
+    justify-content: center;
+    background-color: powderblue;
+    height: 10%;
+    text-align: center;
+    align-items: center; 
+}
+.left-container-inners{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90%;
+    background-image: url(giphy.gif);
+}
+.Clicker-display{
+    /* border: 1px solid black; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    rotate: 10deg;
+    animation: tilt 8s infinite ease-in-out;
+    transform-origin: center;
+    transition: transform 0.3s ease;
+    
+}
+
+@keyframes tilt {
+    0%   { transform: rotate(0deg); }
+    25%  { transform: rotate(10deg); }
+    50%  { transform: rotate(0deg); }
+    75%  { transform: rotate(10deg); }
+    100% { transform: rotate(0deg); }
+}
+
+.clicker-img{
+    transition: transform 0.001s ease;
+}
+/* Middle Container Contents */
+.middle-container{
+ grid-column: 3;
+ border: 1px solid white;
+ /* background-color: black; */
+}
+.middle-container-header{
+    display: flex;
+    justify-content: center;
+    background-color: powderblue;
+    height: 10%;
+    text-align: center;
+    align-items: center; 
+}
+/* .middle-container-inners{
+     
+} */
+.CashCount-box{
+    background-color: darkgreen;
+    margin: 5px 10px 5px 10px;
+    padding: 10px;
+    border: 3px solid lightgreen;
+}
+.CashCount{
+    font-size: 20px;
+    color: white;
+    font-weight: 2px;
+}
+.progress-box{
+    display: flex;
+    justify-content: space-between;
+    background-color: orange;
+    margin: 5px 10px 5px 10px;
+    padding: 10px;
+    border: 3px solid powderblue;
+}
+.progress-box button{
+    width: 30%;
+}
+
+
+/* Right Container COntents */
+.right-container{
+    grid-column: 5;
+    border: 1px solid white;
+    background-color: black;
+    overflow: scroll;
+
+}
+.right-container-header{
+    display: flex;
+    justify-content: center;
+    background-color: powderblue;
+    height: 10%;
+    text-align: center;
+    align-items: center; 
+}
+
+.right-container-inners{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* height: max-content; */
+}
+.right-container-inners div{
+    cursor: pointer;
+    background-color: powderblue;
+    color: blue;
+    display: flex;
+    align-items: center;
+    justify-content: space-around; 
+    font-size: 25px;   
+    border: 1px solid white;
+    width: 80%;
+    height: 50px;
+    padding: 3px;
+    margin: 10px;
+    border-radius: 20px;
+}
+
+/* Temporarily enlarge the item */
+.enlarge {
+    transform: scale(1.2);
+}
+.clickable-item {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+/* Fonts */
+.pixelify-sans-font {
+    font-family: "Pixelify Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: normal;
+    font-style: normal;
+}
+.jersey-10-regular {
+    font-family: "Jersey 10", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+@media screen and (max-width: 680px) {
+    .progress-box button{
+        font-size: 10px;
+    }
+    .right-container-inners div{
+        font-size: 15px;
+    }
+}
