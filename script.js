@@ -709,9 +709,9 @@ function rebirth(){
 
 function resetNum(){
     console.log("Reset Numbers")
-    let CostFirst = 10
-    let CostSecond = 25
-    let CostThird = 50
+    CostFirst = 10
+    CostSecond = 25
+    CostThird = 50
     CostFourth = 1000
     CostFifth = 2500
     CostSixth = 10000
