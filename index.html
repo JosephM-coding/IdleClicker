@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Jersey+10&family=Pixelify+Sans:wght@400..700&family=Playwrite+US+Modern+Guides&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 </head>
-<body class="noselect">
+<body class="noselect" id="body">
     <div class="Inventory" id="Invetory">
         <div style="display: flex; justify-content: space-between;">
             <h1>Parts List</h1>
@@ -33,9 +33,31 @@
             <p>You can change the theme to a dark and light verion</p>
         </div>
     </div>
-    <div class="game-container jersey-10-regular">
-        <div class="left-container">
-            <div class="left-container-header">
+    <div class="Upgrades" id="Upgrades" style="display: none;">
+        <div style="display: flex; justify-content: space-between;">
+            <h1>Total Upgrades</h1>
+            <button onclick="exitUpgrades()">❌</button>
+        </div>
+        <div>
+             <ul id="upgradesList">
+                <!-- Insert Parts here -->
+                <p><span>Upgrade 1 (+1 click):</span><span id="totalUpgrade1">0</span></p>
+                <p><span>Upgrade 2 (+.2 multiplier):</span><span id="totalUpgrade2">0</span></p>
+                <p><span>Upgrade 3 (+1 autoclick):</span><span id="totalUpgrade3">0</span></p>
+                <p><span>Upgrade 4 (+5 per click):</span><span id="totalUpgrade4">0</span></p>
+                <p><span>Upgrade 5 (+.5 multiplier):</span><span id="totalUpgrade5">0</span></p>
+                <p><span>Upgrade 6 (+3 autoclick):</span><span id="totalUpgrade6">0</span></p>
+                <p><span>Upgrade 7 (+20 per click):</span><span id="totalUpgrade7">0</span></p>
+                <p><span>Upgrade 8 (+3 multiplier):</span><span id="totalUpgrade8">0</span></p>
+                <p><span>Upgrade 9 (+10 autoclick):</span><span id="totalUpgrade9">0</span></p>
+                <p><span>Super Upgrade 1 (+300 per click):</span><span id="totalSuperUpgrade1">0</span></p>
+                <p><span>Super Upgrade 2 (+100 multiplier):</span><span id="totalSuperUpgrade2">0</span></p>
+            </ul>
+        </div>
+    </div>
+    <div class="game-container jersey-10-regular" id="gameContainer">
+        <div class="left-container" id="leftContainer">
+            <div class="left-container-header" id="leftContainerHeader">
                 <h1 class="pixelify-sans-font">Space Clicker!</h1>
             </div>
             <div class="left-container-inners" id="leftContainerInners">
@@ -46,8 +68,8 @@
         </div>
         <div class="cloudWall-1">
         </div>
-        <div class="middle-container">
-            <div class="middle-container-header">
+        <div class="middle-container" id="middleContainer">
+            <div class="middle-container-header" id="middleContainerHeader">
                 <h1 class="pixelify-sans-font">User Interface</h1>
             </div>
             <div class="middle-container-inners">
@@ -61,8 +83,8 @@
                 </div>
                 <div class="Interface" id="Interface">
                     <button onclick="openInventory()">Open Inventory</button>
-                    <button>Check Upgrades</button>
-                    <button>Theme Change</button>
+                    <button onclick="openUpgrades()">Check Upgrades</button>
+                    <button onclick="ChangeTheme()">Theme Change</button>
                 </div>
                 <div class="AlertBox">
                     <div class="AlertBox-inners" id="AlertBoxInners">
@@ -73,15 +95,12 @@
         </div>
         <div class="cloudWall-2">
         </div>
-        <div class="right-container">
-            <div class="right-container-header">
+        <div class="right-container" id="rightContainer">
+            <div class="right-container-header" id="rightContainerHeader">
                 <h1 class="pixelify-sans-font" id="rightContainerHeaderTitle">Upgrades</h1>
                 <div class="RightHeaderControls" id="RightHeaderControls">
                     <div id="leftArrow" class="leftArrow">
                         <p>⬅</p>
-                    </div>
-                    <div id="searchContainer" class="searchContainer">
-                        <input type="text">
                     </div>
                     <div id="rightArrow" class="rightArrow">
                         <!-- <img src="" style="width: 50px;"> -->
@@ -101,10 +120,10 @@
                 <div id="ninthUpgrade"><span>+ 10 autoclick</span><span id="NinthCost"></span></div>
                 <div id="tenthUpgrade"><span>Rebirth</span><span id="TenthCost"></span></div>
                 <div id="FirstSuperUpgrade" class="hidden"><span> +300 per click</span><span id="FirstSuperCost">$$$</span></div>
-                <div id="SecondSuperUpgrade" class="hidden"><span> + 10 multiplier</span><span id="SecondSuperCost">$$$</span></div>
+                <div id="SecondSuperUpgrade" class="hidden"><span> + 100 multiplier</span><span id="SecondSuperCost">$$$</span></div>
                 <div id="ThirdSuperUpgrade" class="hidden"><span> +Discounter</span><span id="ThirdSuperCost">$$$</span></div>
-                <div id="FourthSuperUpgrade" class="hidden"><span> ...</span><span id="FourthSuperCost">$$$</span></div>
-                <div id="FifthSuperUpgrade" class="hidden"><span> ...</span><span id="FifthSuperCost">$$$</span></div>
+                <div id="FourthSuperUpgrade" class="hidden"><span>Find Random Part</span><span id="FourthSuperCost">$$$</span></div>
+                <div id="FifthSuperUpgrade" class="hidden"><span>Build Rocket Ship</span><span id="FifthSuperCost">$$$</span></div>
             </div>
         </div>
     </div>
