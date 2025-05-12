@@ -27,10 +27,14 @@
                 <p><span>Part 4:</span><span id="totalPart4">...</span></p>
                 <p><span>Part 5:</span><span id="totalPart5">...</span></p>
             </ul>
-            <p style="margin-top: 10px;">Tips:</p>
-            <p>Keep rebirthing for new features</p>
-            <p>You need 10 of each part to finish the game!</p>
-            <p>You can change the theme to a dark and light verion</p>
+            <div class="TipsList">
+                <h3 style="margin-top: 10px;">Tips:</h3>
+                <p>Keep rebirthing for new features</p>
+                <p>You need 10 of each part to finish the game!</p>
+                <p>You can change the theme to a dark and light verion</p>
+                <p>Clicking gives you parts (1/1000)(autoclickers DONT count)</p>
+                <p>Rebirthing Gives a global .5 multiplier per</p>
+            </div>
         </div>
     </div>
     <div class="Upgrades" id="Upgrades" style="display: none;">
@@ -39,7 +43,7 @@
             <button onclick="exitUpgrades()">❌</button>
         </div>
         <div>
-             <ul id="upgradesList">
+             <ul id="upgradesList" class="upgradesList">
                 <!-- Insert Parts here -->
                 <p><span>Upgrade 1 (+1 click):</span><span id="totalUpgrade1">0</span></p>
                 <p><span>Upgrade 2 (+.2 multiplier):</span><span id="totalUpgrade2">0</span></p>
@@ -52,6 +56,10 @@
                 <p><span>Upgrade 9 (+10 autoclick):</span><span id="totalUpgrade9">0</span></p>
                 <p><span>Super Upgrade 1 (+300 per click):</span><span id="totalSuperUpgrade1">0</span></p>
                 <p><span>Super Upgrade 2 (+100 multiplier):</span><span id="totalSuperUpgrade2">0</span></p>
+                <p><span>Total Click Value: </span><span id="totalClickValue"></span></p>
+                <p><span>Total multiplier: </span><span id="TotalMultiplier"></span></p>
+                <p><span>Total autoclickers: </span><span id="TotalAutoclickers"></span></p>
+                <p><span>Total Rebirths: </span><span id="totalRebirthCount"></span></p>
             </ul>
         </div>
     </div>
@@ -61,6 +69,7 @@
                 <h1 class="pixelify-sans-font">Space Clicker!</h1>
             </div>
             <div class="left-container-inners" id="leftContainerInners">
+                <!-- <p style="color: white; position: absolute ; z-index: 100;" id="plus">+1</p> -->
                 <div class="Clicker-display" id="clickerDisplay">
                     <img src="SpinningPlanet.gif" id="Clickerimg" onclick="enlargeItem(this)" style="border-radius: 100px; width: 50%; height: 50%;"> 
                 </div>
@@ -77,14 +86,14 @@
                     <p class="CashCount">cash: <span id="cashCount">...</span></p>
                 </div>
                 <div class="progress-box">
-                    <button onclick="save()" style="background-color: greenyellow;">Save</button>
-                    <button onclick="load()" style="background-color: yellow;">Load</button>
-                    <button onclick="deleteAll()" style="background-color: red; color: white;">Delete</button>
+                    <button onclick="save()" class="jersey-10-regular" style="background-color: greenyellow;">Save</button>
+                    <button onclick="load()" class="jersey-10-regular" style="background-color: yellow;">Load</button>
+                    <button onclick="deleteAll()" class="jersey-10-regular" style="background-color: red; color: white;">Delete</button>
                 </div>
                 <div class="Interface" id="Interface">
-                    <button onclick="openInventory()">Open Inventory</button>
-                    <button onclick="openUpgrades()">Check Upgrades</button>
-                    <button onclick="ChangeTheme()">Theme Change</button>
+                    <button onclick="openInventory()" class="jersey-10-regular">Inventory</button>
+                    <button onclick="openUpgrades()" class="jersey-10-regular">Upgrades</button>
+                    <button onclick="ChangeTheme()" class="jersey-10-regular">Theme</button>
                 </div>
                 <div class="AlertBox">
                     <div class="AlertBox-inners" id="AlertBoxInners">
