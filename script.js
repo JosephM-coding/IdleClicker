@@ -1,5 +1,6 @@
 const clickerDisplay = document.getElementById("clickerDisplay")
 const leftContainerInners = document.getElementById("leftContainerInners")
+const plus = document.getElementById("plus");
 const cashCount = document.getElementById("cashCount")
 const AlertBoxInners = document.getElementById("AlertBoxInners")
 const RightHeaderControls = document.getElementById('RightHeaderControls')
@@ -92,12 +93,13 @@ let CostFourthSuper = 25000
 //Fifth Super Upgrade
 const FifthSuperUpgrade = document.getElementById('FifthSuperUpgrade')
 const FifthSuperCost = document.getElementById("FifthSuperCost")
-let CostFifthSuper = 50000000000000
+let CostFifthSuper = 1000000000000000
 
 let cash = 0
 let multiplier = 1
 let additionalClicks = 0
 let autoClickTimer = 1000
+let ConsolePopTime = 5000
 let CurrentClickValue = (1 + additionalClicks) * multiplier
 let maxAutoClickers1 = 0
 let maxAutoClickers2 = 0
@@ -115,7 +117,8 @@ let intervalId1 = null
 let intervalId2 = null
 let intervalId3 = null
 
-let theme = true
+let theme = 0
+let initialNum = 0
 
 let totalAutoClickers1 = 0
 let totalAutoClickers2 = 0
@@ -137,7 +140,11 @@ function addThousandSeparators(number) {
     if(number >= 1000000){
         if(number >= 1000000000){
             if(number >= 1000000000000){
-                number = `${(number/1000000000000).toFixed(2)}Tril`
+                if(number >= 1000000000000000){
+                    number = `${(number/1000000000000000).toFixed(2)}Quad`
+                }else{
+                    number = `${(number/1000000000000).toFixed(2)}Tril`
+                }
             } else {
                 number = `${(number/1000000000).toFixed(2)}Bil`
             }
@@ -167,8 +174,18 @@ function callAllCostValues(){
 }
 callAllCostValues()
 
+theme = Number(localStorage.getItem("theme"))
+console.log(theme)
+if (theme != 1){
+    theme = 1
+    ChangeTheme()
+}
+
+
 function ChangeTheme(){
-    if(theme){
+    console.log("Here")
+    if(theme == 1){
+        console.log("There")
         if(page == 1){
             rightContainerHeader.style.backgroundColor = "cornflowerblue"
             rightContainerHeader.style.color = "powderblue"
@@ -178,13 +195,13 @@ function ChangeTheme(){
         leftContainerHeader.style.backgroundColor = "cornflowerblue"
         leftContainerHeader.style.color = "powderblue"
         document.querySelectorAll(".right-container-inners > div").forEach((Element)=>{
-            console.log("here")
             Element.style.backgroundColor = "blue"
             Element.style.color = 'powderblue'
-
         })
         Invetory.style.backgroundColor = "blue"
         Invetory.style.color = "powderblue"
+        Upgrades.style.backgroundColor = "blue"
+        Upgrades.style.color = "powderblue"
         rightContainer.style.border = "none"
         middleContainer.style.border = "none"
         leftContainer.style.border = "none"
@@ -195,9 +212,9 @@ function ChangeTheme(){
         rightContainerHeader.style.borderRadius = "40px"
         middleContainerHeader.style.borderRadius = "40px"
         leftContainerHeader.style.borderRadius = "40px"
-        theme = false
-    }else{
-        theme = true
+        theme = 0
+        localStorage.setItem("theme", theme)
+    }else if(theme == 0){
         if(page == 1){
             rightContainerHeader.style.backgroundColor = "blue"
             rightContainerHeader.style.color = "powderblue"
@@ -207,12 +224,13 @@ function ChangeTheme(){
         leftContainerHeader.style.backgroundColor = "blue"
         leftContainerHeader.style.color = "powderblue"
         document.querySelectorAll(".right-container-inners > div").forEach((Element)=>{
-            console.log("here")
             Element.style.backgroundColor = "powderblue"
             Element.style.color = "blue"
         })
         Invetory.style.backgroundColor = "powderblue"
         Invetory.style.color = "blue"
+        Upgrades.style.backgroundColor = "powderblue"
+        Upgrades.style.color = "blue"
         rightContainer.style.border = "1px solid white"
         middleContainer.style.border = "1px solid white"
         leftContainer.style.border = "1px solid white"
@@ -222,6 +240,8 @@ function ChangeTheme(){
         rightContainerHeader.style.borderRadius = "0px"
         middleContainerHeader.style.borderRadius = "0px"
         leftContainerHeader.style.borderRadius = "0px"
+        theme = 1
+        localStorage.setItem("theme", theme)
     }
 }
 
@@ -291,8 +311,29 @@ function save(){
     // document.cookie = `CostFifth=${CostNinth}`
     localStorage.setItem("CostTenth", CostTenth)
     // document.cookie = `CostTenth=${CostTenth}`
+    localStorage.setItem("CostCostFirstSuper", CostFirstSuper)
+    localStorage.setItem("CostSecondSuper", CostSecondSuper)
+    localStorage.setItem("CostThirdSuper", CostThirdSuper)
+    localStorage.setItem("CostFourthSuper", CostFourthSuper)
+    localStorage.setItem("totalUpgrade1amount", totalUpgrade1amount)
+    localStorage.setItem("totalUpgrade2amount", totalUpgrade2amount)
+    localStorage.setItem("totalUpgrade3amount", totalUpgrade3amount)
+    localStorage.setItem("totalUpgrade4amount", totalUpgrade4amount)
+    localStorage.setItem("totalUpgrade5amount", totalUpgrade5amount)
+    localStorage.setItem("totalUpgrade6amount", totalUpgrade6amount)
+    localStorage.setItem("totalUpgrade7amount", totalUpgrade7amount)
+    localStorage.setItem("totalUpgrade8amount", totalUpgrade8amount)
+    localStorage.setItem("totalUpgrade9amount", totalUpgrade9amount)
+    localStorage.setItem("totalSuperUpgrade1amount", totalSuperUpgrade1amount)
+    localStorage.setItem("totalSuperUpgrade2amount", totalSuperUpgrade2amount)
     localStorage.setItem("totalRebriths", totalRebriths)
+    localStorage.setItem("part1", part1)
+    localStorage.setItem("part1", part2)
+    localStorage.setItem("part1", part3)
+    localStorage.setItem("part1", part4)
+    localStorage.setItem("part1", part5)
     AlertBoxInners.innerHTML += `<p style="color: Green; font-size: bold;">Saved Progress!<p>`
+
 }
 
 function load(){
@@ -318,7 +359,14 @@ function load(){
     CostEighth = Number(localStorage.getItem("CostEighth"))//Number(getCookie('CostEighth'))
     CostNinth = Number(localStorage.getItem("CostNinth"))//Number(getCookie('CostNinth'))
     CostTenth = Number(localStorage.getItem("CostTenth"))//Number(getCookie('CostNinth'))
+    CostFirstSuper = Number(localStorage.getItem("CostFirstSuper"))
+    CostSecondSuper = Number(localStorage.getItem("CostSecondSuper"))
+    CostThirdSuper = Number(localStorage.getItem("CostThirdSuper"))
+    CostFourthSuper = Number(localStorage.getItem("CostFourthSuper"))
     totalRebriths = Number(localStorage.getItem("totalRebriths"))
+    intervalId1 = setInterval(autoClick1, autoClickTimer);
+    intervalId2 = setInterval(autoClick2, autoClickTimer);
+    intervalId3 = setInterval(autoClick3, autoClickTimer);
 
     cashCount.textContent = `${addThousandSeparators((Math.round(cash * 100) / 100))}`
     FirstCost.textContent = `Cost:$${addThousandSeparators(Math.floor(CostFirst))}`
@@ -331,37 +379,19 @@ function load(){
     EighthCost.textContent = `Cost:$${addThousandSeparators(Math.floor(CostEighth))}`
     NinthCost.textContent = `Cost:$${addThousandSeparators(Math.floor(CostNinth))}`
     TenthCost.textContent = `Cost:$${addThousandSeparators(Math.floor(CostTenth))}`
+    FirstSuperCost.textContent = `Cost:$${addThousandSeparators(Math.floor(CostFirstSuper))}`
+    SecondSuperCost.textContent = `Cost:$${addThousandSeparators(Math.floor(CostSecondSuper))}`
+    ThirdSuperCost.textContent = `Cost:$${addThousandSeparators(Math.floor(CostThirdSuper))}`
+    FourthSuperCost.textContent = `Cost:$${addThousandSeparators(Math.floor(CostFourthSuper))}`
+    totalPart1.textContent = `${part1}`
+    totalPart2.textContent = `${part2}`
+    totalPart3.textContent = `${part3}`
+    totalPart4.textContent = `${part4}`
+    totalPart5.textContent = `${part5}`
 
-    loadAutoclickers()
-    console.log("Made it")
 
     if(totalRebriths > 0){
         RightHeaderControls.style.display = "flex"
-    }
-}
-
-function loadAutoclickers(){
-    console.log("Hello")
-    console.log(maxAutoClickers1)
-    for(let i = 0; i < maxAutoClickers1; i++){
-        let intervalId = setInterval(autoClick1, autoClickTimer);
-        console.log("Goes into loop")
-    }
-    if(maxAutoClickers1 >= 20){
-        ThirdCost.textContent = `Max amount`
-    }
-    
-    for(let i = 0; i < maxAutoClickers2; i++){
-        let intervalId = setInterval(autoClick2, autoClickTimer);
-    }
-    if(maxAutoClickers2 >= 20){
-        SixthCost.textContent = `Max amount`
-    }
-    for(let i = 0; i < maxAutoClickers3; i++){
-        let intervalId = setInterval(autoClick3, autoClickTimer);
-    }
-    if(maxAutoClickers3 >= 20){
-        SixthCost.textContent = `Max amount`
     }
 }
 
@@ -449,8 +479,9 @@ function changeUpgradesBack(){
 }
 
 function addMoney(){
-    cash = (cash + (1 + additionalClicks) * multiplier)
-    CurrentClickValue = (1 + additionalClicks) * multiplier
+    console.log(CurrentClickValue)
+    CurrentClickValue = ((1 + additionalClicks) * multiplier) * (1 + (totalRebriths))
+    cash = (cash + CurrentClickValue)
     cashCount.textContent = `${addThousandSeparators((Math.round(cash * 100) / 100))}`
 }
 
@@ -502,18 +533,57 @@ function findPart(){
 function ClickIndication(){
     console.log("click")
     addMoney()
-    findPart()
-    // const boxRect = box.getBoundingClientRect();
-    // const boxWidth = boxRect.width;
-    // const boxHeight = boxRect.height;
-    // // Ensure the dot stays within the box and doesn't overflow
-    // let left = Math.floor(Math.random() * (boxWidth - 50));
-    // let bottom = Math.floor(Math.random() * (boxHeight - 50));
 
-    // // Update dot's position, using left and top only
-    // plus.style.left = `${left}px`;
-    // plus.style.top = `${bottom}px`;
+    let RandomNumber = Math.floor((Math.random() * 1000) + 1);
+    if (RandomNumber == 1){
+        findPart()
+    }
+    
+    ClickPlusOne()
+    console.log("Here")
+    initialNum++
 }
+
+function ClickPlusOne(){
+    let boxRect = leftContainerInners.getBoundingClientRect();
+    const boxWidth = boxRect.width;
+    const boxHeight = boxRect.height;
+    console.log(`BoxHeight`,boxHeight)
+    console.log(`boxWidth`, boxWidth)
+    let left = Math.floor(Math.random() * (boxWidth));
+    let bottom = Math.floor(Math.random() * (boxHeight));
+    console.log(`Left`, left)
+    console.log('Bottom', bottom)
+    // let id = Date.now()
+    let p = document.createElement('p');
+    p.id = initialNum;
+    p.style.color = 'gold'
+    p.style.fontSize = "20px" 
+    p.style.position = "absolute"
+    p.style.left = `${left}px`;
+    p.style.bottom = `${bottom}px`;
+    p.style.animation = "tilt2 1s infinite ease-in-out"
+    p.innerText = `+${addThousandSeparators(CurrentClickValue)}`;
+    leftContainerInners.appendChild(p)
+    // Remove the element after 2 seconds
+    setTimeout(() => {
+        console.log("detected")
+        p.remove();
+        // or
+        // leftContainerInners.parentNode.removeChild(p)
+    }, 2000);
+    // setInterval(function(p){
+    //     p.remove()
+    //     console.log("Detected")
+    // }, 3000)
+
+    // leftContainerInners.innerHTML += `<p id="${initialNum}" style="color: gold; font-size: 10px; postition: absolute; top: '${top}'; bottom: '${bottom}'">+1</p>`
+    // Update dot's position, using left and top only
+    // document.getElementById(`${initialNum}`).style.left = `${left}px`;
+    // document.getElementById(`${initialNum}`).style.bottom = `${bottom}px`;
+
+}
+
 function checkUpgrades(){
     totalUpgrade1.textContent = `${totalUpgrade1amount}`
     totalUpgrade2.textContent = `${totalUpgrade2amount}`
@@ -526,6 +596,10 @@ function checkUpgrades(){
     totalUpgrade9.textContent = `${totalUpgrade9amount}`
     totalSuperUpgrade1.textContent = `${totalSuperUpgrade1amount}`
     totalSuperUpgrade2.textContent = `${totalSuperUpgrade2amount}`
+    totalClickValue.textContent = `${CurrentClickValue} per click`
+    TotalMultiplier.textContent = `${multiplier.toFixed(2)}x Multipler`
+    TotalAutoclickers.textContent = `${(totalUpgrade3amount) + (totalUpgrade6amount * 3) + (totalUpgrade9amount * 10)}`
+    totalRebirthCount.textContent = `${totalRebriths} Rebriths`
 }
 
 function exitInventory(){
@@ -577,10 +651,38 @@ function PopsArray() {
     alerts.forEach(alert => AlertBoxInners.innerHTML = alert )
      //put back all the other alerts
     // console.log("pop")
+    DisplayArray()
+    ChangePopTime()
 }
 
-setInterval(PopsArray, 1500)
+let PopArray = setInterval(PopsArray, ConsolePopTime)
+PopArray
 setInterval(DisplayArray, 1)
+
+function ChangePopTime(){
+    console.log("Here")
+    console.log(ConsolePopTime)
+    if(alerts.length > 10){
+        ConsolePopTime = 50
+        if (PopArray) {
+            clearInterval(PopArray);
+        }
+        PopArray = setInterval(PopsArray, ConsolePopTime)
+    }else if(alerts.length > 5){
+        ConsolePopTime = 1000
+        if (PopArray) {
+            clearInterval(PopArray);
+        }
+        PopArray = setInterval(PopsArray, ConsolePopTime)
+    }else{
+        ConsolePopTime = 2000
+        if (PopArray) {
+            clearInterval(PopArray);
+        }
+        PopArray = setInterval(PopsArray, ConsolePopTime)
+    }
+
+}
 
 let SelectArray = [
     [CostFirst, firstUpgrade],
@@ -699,6 +801,7 @@ function ThUpgrade() {
             }
             
             // Set the new interval
+            totalAutoClickers1++
             intervalId1 = setInterval(autoClick1, autoClickTimer);
             
             // Increment the max auto-clickers counter
@@ -721,10 +824,8 @@ function ThUpgrade() {
 }
 
 function autoClick1(){
-    totalAutoClickers1++
-    for(i=0; i <= totalAutoClickers1; i++){
-        CurrentClickValue = (1 + additionalClicks) * multiplier
-        cash = cash + CurrentClickValue
+    for(i=0; i < totalAutoClickers1; i++){
+        addMoney()
         cashCount.textContent = `${addThousandSeparators((Math.round(cash * 100) / 100))}`
     }
 }
@@ -766,22 +867,21 @@ function FifUpgrade(){
 
 function SiUpgrade(){
     console.log("Sixth Upgrade")
-    if(maxAutoClickers2 < 20) {
+    console.log(maxAutoClickers2)
+    if(maxAutoClickers2 <= 20) {
         if(cash >= CostSixth){
             console.log("Confirm Sixth Upgrade Bought")
             cash = cash - CostSixth
             CostSixth = CostSixth * 1.5;
-            
-            // Clear the previous interval (if it exists)
-            if (intervalId2) {
-                clearInterval(intervalId2);
-            }
-            
             // Set the new interval
-            intervalId2 = setInterval(autoClick2, autoClickTimer);
             maxAutoClickers2++
             alerts.unshift(`<p style="color: powderblue; font-size: bold;">Bought Sixth Upgrade<p>`)
             totalUpgrade6amount++
+            totalAutoClickers2++
+            if (intervalId2) {
+                clearInterval(intervalId2);
+            }
+            intervalId2 = setInterval(autoClick2, autoClickTimer);
         } else {
             console.log("Not enough money")
             alerts.unshift(`<p style="color: red; font-size: bold;">Not Enough money<p>`)
@@ -795,12 +895,11 @@ function SiUpgrade(){
     checkUpgrades()
 }
 
-function autoClick2(){
-    totalAutoClickers2++
+function autoClick2(){ 
+    console.log(totalAutoClickers2)
     for(i = 0; i < totalAutoClickers2; i++){
         for(a=0; a < 3; a++){
-        CurrentClickValue = (1 + additionalClicks) * multiplier
-        cash = cash + CurrentClickValue
+        addMoney()
         cashCount.textContent = `${addThousandSeparators((Math.round(cash * 100) / 100))}`
         }
     }
@@ -855,10 +954,11 @@ function NiUpgrade(){
             }
             
             // Set the new interval
-            intervalId3 = setInterval(autoClick3, autoClickTimer);
-            maxAutoClickers2++
+            maxAutoClickers3++
             alerts.unshift(`<p style="color: powderblue; font-size: bold;">Bought Ninth Upgrade<p>`)
             totalUpgrade9amount++
+            totalAutoClickers3++
+            intervalId3 = setInterval(autoClick3, autoClickTimer);
         } else {    
             console.log("Not enough money")
             alerts.unshift(`<p style="color: red; font-size: bold;">Not Enough money<p>`)
@@ -873,11 +973,9 @@ function NiUpgrade(){
 }
 
 function autoClick3(){
-    totalAutoClickers3++
     for(i = 0; i < totalAutoClickers3; i++){
         for(a=0; a < 10; a++){
-        CurrentClickValue = (1 + additionalClicks) * multiplier
-        cash = cash + CurrentClickValue
+        addMoney()
         cashCount.textContent = `${addThousandSeparators((Math.round(cash * 100) / 100))}`
         }
     }
@@ -893,7 +991,7 @@ function rebirth(){
         TenthCost.textContent = `Cost:$${addThousandSeparators(Math.floor(CostTenth))}`
         totalRebriths++
         resetNum()
-        if(totalRebriths = 1){
+        if(totalRebriths >= 1){
             RightHeaderControls.style.display = "flex"
         }
         alerts.unshift(`<p style="color: pink; font-size: bold;">Rebirthed!<p>`)
@@ -916,11 +1014,23 @@ function resetNum(){
     CostSeventh = 20000
     CostEighth = 40000
     CostNinth = 60000
+    totalUpgrade1amount = 0
+    totalUpgrade2amount = 0
+    totalUpgrade3amount = 0
+    totalUpgrade4amount = 0
+    totalUpgrade5amount = 0
+    totalUpgrade6amount = 0
+    totalUpgrade7amount = 0
+    totalUpgrade8amount = 0
+    totalUpgrade9amount = 0
+    totalSuperUpgrade1amount = 0
+    totalSuperUpgrade2amount = 0
+
     cash = 0
     multiplier = 1
     additionalClicks = 0
     autoClickTimer = 1000
-    CurrentClickValue = (1 + additionalClicks) * multiplier
+    CCurrentClickValue = ((1 + additionalClicks) * multiplier) * (1 + (totalRebriths))
     if (intervalId1) {
         clearInterval(intervalId1);
         clearInterval(autoClick3)
@@ -961,7 +1071,7 @@ function FiSuperUpgrade(){
         console.log("First Super Upgrade")
         additionalClicks = additionalClicks + 300
         cash = cash - CostFirstSuper
-        CostFirstSuper = CostFirstSuper * 1.5
+        CostFirstSuper = CostFirstSuper * 2.5
         alerts.unshift(`<p style="color: powderblue; font-size: bold;">Bought First Super Upgrade<p>`)
         totalSuperUpgrade1amount++
     } else {
@@ -978,7 +1088,7 @@ function SeSuperUpgrade(){
         console.log("Second Super Upgrade")
         multiplier = multiplier + 100
         cash = cash - CostSecondSuper
-        CostSecondSuper = CostSecondSuper * 1.5
+        CostSecondSuper = CostSecondSuper * 2.5
         alerts.unshift(`<p style="color: powderblue; font-size: bold;">Bought Second Super Upgrade<p>`)
         totalSuperUpgrade2amount++
     } else {
@@ -1024,12 +1134,16 @@ function FoSuperUpgrade(){
 }
 
 function FifSuperUpgrade(){
-    if(cash >= FifthSuperCost){
-        if(part1 >= 10 && part2 >= 10 && part3 >= 10 && part4 >= 10 && part5 >= 10){
-            alerts.unshift(`<p style="color: powderblue; font-size: bold;">Finished the game<p>`)
-            cash = Infinity
+    if(cash >= CostFifthSuper){
+        if(totalRebriths >= 5){
+            if(part1 >= 10 && part2 >= 10 && part3 >= 10 && part4 >= 10 && part5 >= 10){
+                alerts.unshift(`<p style="color: powderblue; font-size: bold;">Finished the game<p>`)
+                cash = Infinity
+            } else{
+                alerts.unshift(`<p style="color: red; font-size: bold;">Not Enough Parts<p>`)
+            }
         } else{
-            alerts.unshift(`<p style="color: red; font-size: bold;">Not Enough Parts<p>`)
+            alerts.unshift(`<p style="color: red; font-size: bold;">Not Enough Rebirths<p>`)
         }
     } else{
         alerts.unshift(`<p style="color: red; font-size: bold;">Not Enough money<p>`)
@@ -1180,7 +1294,8 @@ document.addEventListener('keydown', function(event) {
     if (event.code === 'Space') {
       // Action to perform when spacebar is pressed
       console.log('Spacebar was pressed');
-      cash = cash + 1000000000000000
+      cash = cash + 100000000000000
+      console.log(totalRebriths)
       cashCount.textContent = `${addThousandSeparators((Math.round(cash * 100) / 100))}`
     }
 });
