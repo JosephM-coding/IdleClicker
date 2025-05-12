@@ -15,7 +15,7 @@ body{
     display: grid;
     grid-template-columns: 1fr 2% 1fr 2% 1fr;
     margin: 10px;
-    height: 700px;
+    height: 80vh;
     max-height: 700px;
 }
 /* Left Container Contents */
@@ -42,6 +42,7 @@ body{
     height: 85%;
     background-image: url(giphy.gif);
     background-size: cover;
+    position: relative;
 }
 .Clicker-display{
     /* border: 1px solid black; */
@@ -62,6 +63,14 @@ body{
     50%  { transform: rotate(0deg); }
     75%  { transform: rotate(10deg); }
     100% { transform: rotate(0deg); }
+}
+
+@keyframes tilt2 {
+    0%   { transform: rotate(-20deg); }
+    25%  { transform: rotate(0deg); }
+    50%  { transform: rotate(20deg); }
+    75%  { transform: rotate(0deg); }
+    100% { transform: rotate(-20deg); }
 }
 
 .clicker-img{
@@ -129,6 +138,14 @@ body{
     height: 10%;
     width: 80%;
 }
+.Interface button{
+    padding: 3px;
+    background-color: blue;
+    border: 3px solid powderblue;
+    font-size: 16px;
+    width: 30%;
+    color: powderblue;
+}
 .progress-box{
     display: flex;
     justify-content: space-between;
@@ -141,6 +158,9 @@ body{
 }
 .progress-box button{
     width: 30%;
+    font-size: 16px;
+    border: 3px solid black;
+
 }
 .Inventory{
     margin-top: 10%;
@@ -153,9 +173,8 @@ body{
     border: 5px solid White;
     background-color: powderblue;
     padding: 10px;
-    width: 400px;
-    height: 400px;
-    max-height: 400px;
+    width: 40%;
+    height: 60%;
 }
 .partsList{
     display: flex;
@@ -173,14 +192,18 @@ body{
     border: 5px solid White;
     background-color: powderblue;
     padding: 10px;
-    width: 400px;
-    height: 400px;
-    max-height: 400px;
+    width: 40%;
+    height: 60%;
 }
 .upgradesList{
-    display: flex;
+    /* display: flex;
     width: 100%;
-    justify-content: flex-start;
+    justify-content: flex-start; */
+}
+.upgradesList p{
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
 }
 /* Right Container COntents */
 .right-container{
@@ -298,6 +321,11 @@ body{
 .clickable-item {
     cursor: pointer;
     transition: transform 0.3s ease;
+}
+.TipsList{
+    margin: 3px;
+    padding: 5px;
+    line-height: 25px;
 }
 
 /* Fonts */
