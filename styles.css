@@ -11,6 +11,15 @@ body{
     /* background-size: cover; */
     height: 100%;
 }
+.navBar{
+    display: flex;
+    justify-content: space-evenly;
+    color: white;
+    width: 80%;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid white;
+}
 .game-container{
     display: grid;
     grid-template-columns: 1fr 2% 1fr 2% 1fr;
@@ -326,6 +335,14 @@ body{
     margin: 3px;
     padding: 5px;
     line-height: 25px;
+}
+.LinkClass{
+    color: orange;
+    text-decoration: none;
+
+}
+.LinkClass:hover{
+    text-decoration: underline;
 }
 
 /* Fonts */
