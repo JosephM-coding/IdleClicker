@@ -374,7 +374,7 @@ body{
 .hidden{
     display: none!important;
 }
-@media screen and (max-width: 680px) {
+@media screen and (max-width: 720px) {
     .game-container{
         display: grid;
         grid-template-columns: 1fr 2% 1fr 2% 1fr;
