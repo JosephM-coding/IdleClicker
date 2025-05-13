@@ -184,6 +184,7 @@ body{
     padding: 10px;
     width: 40%;
     height: 60%;
+    overflow: scroll;
 }
 .partsList{
     display: flex;
@@ -203,6 +204,7 @@ body{
     padding: 10px;
     width: 40%;
     height: 60%;
+    overflow: scroll;
 }
 .upgradesList{
     /* display: flex;
@@ -251,6 +253,8 @@ body{
 }
 .leftArrow{
     border: 3px solid black;
+    display: flex;
+    align-items: center;
     font-size: 30px;
 }
 
@@ -371,10 +375,118 @@ body{
     display: none!important;
 }
 @media screen and (max-width: 680px) {
+    .game-container{
+        display: grid;
+        grid-template-columns: 1fr 2% 1fr 2% 1fr;
+        margin: 10px;
+        height: 60vh;
+        max-height: 700px;
+        overflow-y: hidden;
+    }
+    .right-container-inners div{
+        font-size: 14px;
+    }
+    .right-container-header{
+        font-size: 12px;
+    }
+    .middle-container-header{
+        font-size: 12px;
+    }
+    .left-container-header{
+        font-size: 12px;
+    }
+    .CashCount-box{
+        background-color: darkgreen;
+        margin: 2px 2px 2px 2px;
+        padding: 5px;
+        border: 3px solid lightgreen;
+        height: 10%;
+        width: 60%;
+    
+    }
+    .CashCount{
+        font-size: 14px;
+        color: white;
+        font-weight: 2px;
+    }
     .progress-box button{
         font-size: 10px;
     }
-    .right-container-inners div{
-        font-size: 15px;
+    .progressBar{
+        border: 1px solid white;
+        width: 60%;
+        height: 20px;
+        font-size: 10px;
+    }
+    .Interface{
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        background-color: cornflowerblue;
+        margin: 2px 2px 2px 2px;
+        padding: 2px;
+        border: 3px solid white;
+        height: 10%;
+        width: 60%;
+    }
+    .Interface button{
+        padding: 3px;
+        background-color: blue;
+        border: 3px solid powderblue;
+        font-size: 8px;
+        width: 30%;
+        color: powderblue;
+    }
+    .AlertBox{
+        background-color: darkorange;
+        font-size: 8px;
+        margin: 2px 2px 2px 2px;
+        padding: 10px;
+        border: 3px solid orange;
+        width: 60%;
+        overflow: hidden;
+    }
+    .progress-box{
+        display: flex;
+        justify-content: space-between;
+        background-color: cornflowerblue;
+        margin: 2px 2px 2px 2px;
+        padding: 2px;
+        border: 3px solid powderblue;
+        width: 60%;
+        max-height: 80%;
+        font-size: 8px;
+    }
+    .right-container-header{
+        /* display: flex; */
+        /* flex-direction: column; */
+        /* justify-content: center; */
+        background-color: blue;
+        color: powderblue;
+        /* height: 15%; */
+        text-align: center;
+        align-items: center; 
+        position: relative;
+    }
+    .RightHeaderControls{
+        display: none;
+        justify-content: space-between;
+        align-items: center;
+        width: 90%;
+        position: absolute;
+    }
+    .rightArrow{
+        font-size: 30px;
+        display: flex;
+        align-items: center;
+        border: none;
+        color: blue;
+    }
+    .leftArrow{
+        border: none;
+        color: blue;
+        display: flex;
+        align-items: center;
+        font-size: 30px;
     }
 }
