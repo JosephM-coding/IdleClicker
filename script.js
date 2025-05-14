@@ -389,6 +389,16 @@ function load(){
     totalPart4.textContent = `${part4}`
     totalPart5.textContent = `${part5}`
 
+    if(maxAutoClickers1 >= 20){
+        ThirdCost.textContent = `Max Amount`
+    }
+    if(maxAutoClickers2 >= 20){
+        SixthCost.textContent = `Max Amount`
+    }
+    if(maxAutoClickers3 >= 20){
+        NinthCost.textContent = `Max Amount`
+    }
+
 
     if(totalRebriths > 0){
         RightHeaderControls.style.display = "flex"
@@ -662,9 +672,11 @@ function progressCheck(){
     let Progression = (cash/CostTenth) * 100
     if (Progression > 100){
         progress.style.width = `100%`
+        progress.textContent = `Progress 100%`
     } else{
         // console.log(Progression)
         progress.style.width = `${Progression}%`  
+        progress.textContent = `Progress ${Progression.toFixed(1)}%`
     }
 }
 setInterval(progressCheck, 1)
@@ -849,6 +861,7 @@ function ThUpgrade() {
             
             // Add an alert for the purchase
             alerts.unshift(`<p style="color: powderblue; font-size: bold;">Bought Third Upgrade<p>`);
+            ThirdCost.textContent = `Cost:$${addThousandSeparators(Math.floor(CostThird))}`;
         } else {
             console.log("Not enough money");
             alerts.unshift(`<p style="color: red; font-size: bold;">Not Enough money<p>`)
@@ -858,7 +871,6 @@ function ThUpgrade() {
         console.log("Max Amount");
     }
     cashCount.textContent = `${addThousandSeparators(Math.round(cash * 100) / 100)}`;
-    ThirdCost.textContent = `Cost:$${addThousandSeparators(Math.floor(CostThird))}`;
     checkUpgrades()
 }
 
@@ -921,6 +933,7 @@ function SiUpgrade(){
                 clearInterval(intervalId2);
             }
             intervalId2 = setInterval(autoClick2, autoClickTimer);
+            SixthCost.textContent = `Cost:$${addThousandSeparators(Math.floor(CostSixth))}`
         } else {
             console.log("Not enough money")
             alerts.unshift(`<p style="color: red; font-size: bold;">Not Enough money<p>`)
@@ -930,7 +943,6 @@ function SiUpgrade(){
         console.log("Max Amount")
     }
     cashCount.textContent = `${addThousandSeparators((Math.round(cash * 100) / 100))}`
-    SixthCost.textContent = `Cost:$${addThousandSeparators(Math.floor(CostSixth))}`
     checkUpgrades()
 }
 
@@ -998,6 +1010,7 @@ function NiUpgrade(){
             totalUpgrade9amount++
             totalAutoClickers3++
             intervalId3 = setInterval(autoClick3, autoClickTimer);
+            NinthCost.textContent = `Cost:$${addThousandSeparators(Math.floor(CostNinth))}`
         } else {    
             console.log("Not enough money")
             alerts.unshift(`<p style="color: red; font-size: bold;">Not Enough money<p>`)
@@ -1007,7 +1020,6 @@ function NiUpgrade(){
         console.log("Max Amount")
     }
     cashCount.textContent = `${addThousandSeparators((Math.round(cash * 100) / 100))}`
-    NinthCost.textContent = `Cost:$${addThousandSeparators(Math.floor(CostNinth))}`
     checkUpgrades()
 }
 
@@ -1329,12 +1341,27 @@ rightArrow.addEventListener('click', changeUpgrades)
 leftArrow.addEventListener('click', changeUpgradesBack)
 clickerDisplay.addEventListener('click', ClickIndication)
 
-document.addEventListener('keydown', function(event) {
-    if (event.code === 'Space') {
-      // Action to perform when spacebar is pressed
-      console.log('Spacebar was pressed');
-      cash = cash + 100000000000000
-      console.log(totalRebriths)
-      cashCount.textContent = `${addThousandSeparators((Math.round(cash * 100) / 100))}`
-    }
-});
+// document.addEventListener('keydown', function(event) {
+//     if (event.code === 'Space') {
+//       // Action to perform when spacebar is pressed
+//       console.log('Spacebar was pressed');
+//       cash = cash + 100000
+//       console.log(totalRebriths)
+//       cashCount.textContent = `${addThousandSeparators((Math.round(cash * 100) / 100))}`
+//     }
+// });
+
+const Name = prompt("Username")
+document.cookie = Name
+
+while(document.cookie.trim().toLowerCase() === "joseph"){
+    document.addEventListener('keydown', function(event) {
+        if (event.code === 'Space') {
+          // Action to perform when spacebar is pressed
+          console.log('Spacebar was pressed');
+          cash = cash + 100000
+          console.log(totalRebriths)
+          cashCount.textContent = `${addThousandSeparators((Math.round(cash * 100) / 100))}`
+        }
+    });
+}
