@@ -15,15 +15,7 @@
 
 ## Project Structure
 
-## SpaceClicker/
-├── index.html # Main HTML layout
-├── styles.css # Custom styles and responsive design
-├── script.js # Core game logic and interactivity
-├── SpinningPlanet.gif # Planet clicker animation
-├── giphy.gif # Background animation (used for themes)
-└── SpaceBackground.webp # Default space background
-
-
+### SpaceClicker
 ## How to Play
 
 1. Click the spinning planet to earn cash.
