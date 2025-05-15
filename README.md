@@ -1051,4 +1051,127 @@ function resetNum(){
 }
 ```
 The rebirth funtion clears all the inital values with the reset funtion and gives you + 1 rebirth which applies a global x1 multiplier
+
+## All the super upgrades
+```
+//A super upgrade that adds 300 to "CurrentClickValue"
+function FiSuperUpgrade(){
+    if(cash >= CostFirstSuper){
+        console.log("First Super Upgrade")
+        additionalClicks = additionalClicks + 300
+        cash = cash - CostFirstSuper
+        CostFirstSuper = CostFirstSuper * 2.5
+        alerts.unshift(`<p style="color: powderblue; font-size: bold;">Bought First Super Upgrade<p>`)
+        totalSuperUpgrade1amount++
+    } else {
+        console.log("Not enough money")
+        alerts.unshift(`<p style="color: red; font-size: bold;">Not Enough money<p>`)
+    }
+    cashCount.textContent = `${addThousandSeparators((Math.round(cash * 100) / 100))}`
+    FirstSuperCost.textContent = `Cost:$${addThousandSeparators(Math.floor(CostFirstSuper))}`
+    checkUpgrades()
+}
+//A super upgrade that adds 100 to "Multiplier"
+function SeSuperUpgrade(){
+    if(cash >= CostSecondSuper){
+        console.log("Second Super Upgrade")
+        multiplier = multiplier + 100
+        cash = cash - CostSecondSuper
+        CostSecondSuper = CostSecondSuper * 2.5
+        alerts.unshift(`<p style="color: powderblue; font-size: bold;">Bought Second Super Upgrade<p>`)
+        totalSuperUpgrade2amount++
+    } else {
+        console.log("Not enough money")
+        AlertBoxInners.innerHTML += `<p style="color: red; font-size: bold;">Not Enough money<p>`
+    }
+    cashCount.textContent = `${addThousandSeparators((Math.round(cash * 100) / 100))}`
+    SecondSuperCost.textContent = `Cost:$${addThousandSeparators(Math.floor(CostSecondSuper))}`
+    checkUpgrades()
+}
+//A discounter that divides every upgrade by 10
+function ThSuperUpgrade(){
+    if(cash >= CostThirdSuper){
+        console.log("third Super Upgrade")
+        discount()
+        cash = cash - CostThirdSuper
+        CostThirdSuper = CostThirdSuper * 15
+        alerts.unshift(`<p style="color: powderblue; font-size: bold;">Bought Third Super Upgrade<p>`)
+    } else{
+        console.log("Not enough money")
+        alerts.unshift(`<p style="color: red; font-size: bold;">Not Enough money<p>`)
+    }
+    cashCount.textContent = `${addThousandSeparators((Math.round(cash * 100) / 100))}`
+    ThirdSuperCost.textContent = `Cost:$${addThousandSeparators(Math.floor(CostThirdSuper))}`
+}
+//Finds a part that is required to complete the game which doubles in price each time but is limited to a max of 1Trillion
+function FoSuperUpgrade(){
+    if(cash >= CostFourthSuper){
+        console.log("Fourth Super Upgrade")
+        findPart()
+        cash = cash - CostFourthSuper
+        CostFourthSuper = CostFourthSuper * 1.5
+        if(CostFourthSuper > 1000000000000){
+            CostFourthSuper = 1000000000000
+        }
+        alerts.unshift(`<p style="color: powderblue; font-size: bold;">Bought Fourth Super Upgrade<p>`)
+    } else{
+        console.log("Not enough money")
+        alerts.unshift(`<p style="color: red; font-size: bold;">Not Enough money<p>`)
+    }
+    cashCount.textContent = `${addThousandSeparators((Math.round(cash * 100) / 100))}`
+    FourthSuperCost.textContent = `Cost:$${addThousandSeparators(Math.floor(CostFourthSuper))}`
+}
+//When all the conditions of 50parts, 5rebirths, and 50Quintillian dollars are met it completes the game
+function FifSuperUpgrade(){
+    if(cash >= CostFifthSuper){
+        if(totalRebriths >= 5){
+            if(part1 >= 10 && part2 >= 10 && part3 >= 10 && part4 >= 10 && part5 >= 10){
+                alerts.unshift(`<p style="color: powderblue; font-size: bold;">Finished the game<p>`)
+                cash = Infinity
+            } else{
+                alerts.unshift(`<p style="color: red; font-size: bold;">Not Enough Parts<p>`)
+            }
+        } else{
+            alerts.unshift(`<p style="color: red; font-size: bold;">Not Enough Rebirths<p>`)
+        }
+    } else{
+        alerts.unshift(`<p style="color: red; font-size: bold;">Not Enough money<p>`)
+    }
+}
+//Is called by ThirdSuperUpgrade and it reduces the prices of upgrades
+function discount(){
+    CostFirst = CostFirst/10
+    CostSecond = CostSecond/10
+    CostThird = CostThird/10
+    CostFourth = CostFourth/10
+    CostFifth = CostFifth/10
+    CostSixth = CostSixth/10
+    CostSeventh = CostSeventh/10
+    CostEighth = CostEighth/10
+    CostNinth = CostNinth/10
+    CostFirstSuper = CostFirstSuper/4
+    CostSecondSuper = CostSecondSuper/4
+    CostFourthSuper = CostFourthSuper/4
+    callAllCostValues() 
+}
+```
+- The first super upgrade is the same as the first but instead of +1 its +300 clicks
+- The second super upgrade is the same as the second but instead of +.2 multiplier its +100
+-The third upgrades utilized the discount function and divides every upgrade by 10 making it easier to get futher into the game
+- The Fourth super upgrade utilized the findpart() function and gives you a random part everytime and makes it more common to get the parts you dont have 10 of
+- The Fifth Super upgrade is how you win the game, if you have 5 rebirths and 10 of each part along with the money requirement you build a ship and complete the game gaining the ability to have inf money
+
+## Admin tool
+```
+document.addEventListener('keydown', function(event) {
+    if (event.code === 'Space') {
+      // Action to perform when spacebar is pressed
+      console.log('Spacebar was pressed');
+      cash = cash + 100000000000
+      console.log(totalRebriths)
+      cashCount.textContent = `${addThousandSeparators((Math.round(cash * 100) / 100))}`
+    }
+});
+```
+A tool used to call any funtion or gain a set amout of money, used to early development
 © 2025 Joseph Mendias
