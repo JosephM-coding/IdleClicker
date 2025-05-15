@@ -13,6 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Jersey+10&family=Pixelify+Sans:wght@400..700&family=Playwrite+US+Modern+Guides&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 </head>
 <body class="noselect" id="body">
+    <!-- A Nav bar to display simple things like the time and time spent playing -->
     <nav class="navBar">
         <p id="Clock" style="color: white;"></p>
         <p id="TimeSpent" style="color: white;"></p>
@@ -21,17 +22,19 @@
     <div class="Inventory" id="Invetory">
         <div style="display: flex; justify-content: space-between;">
             <h1>Parts List</h1>
+            <!-- A button to hide the div -->
             <button onclick="exitInventory()">❌</button>
         </div>
         <div>
-             <ul id="partsList">
+             <table id="partsList" class="partsList">
                 <!-- Insert Parts here -->
-                <p><span>Part 1:</span><span id="totalPart1">...</span></p>
-                <p><span>Part 2:</span><span id="totalPart2">...</span></p>
-                <p><span>Part 3:</span><span id="totalPart3">...</span></p>
-                <p><span>Part 4:</span><span id="totalPart4">...</span></p>
-                <p><span>Part 5:</span><span id="totalPart5">...</span></p>
-            </ul>
+                <tr><td>Part 1:</td><td id="totalPart1">...</td></tr>
+                <tr><td>Part 2:</td><td id="totalPart2">...</td></tr>
+                <tr><td>Part 3:</td><td id="totalPart3">...</td></tr>
+                <tr><td>Part 4:</td><td id="totalPart4">...</td></tr>
+                <tr><td>Part 5:</td><td id="totalPart5">...</td></tr>
+             </table>
+             <!-- A list that tells you what to do in the game -->
             <div class="TipsList">
                 <h3 style="margin-top: 10px;">Tips:</h3>
                 <p>Keep rebirthing for new features</p>
@@ -42,14 +45,17 @@
             </div>
         </div>
     </div>
+    <!-- A container to display all bought utilites -->
     <div class="Upgrades" id="Upgrades" style="display: none;">
         <div style="display: flex; justify-content: space-between;">
             <h1>Total Upgrades</h1>
+            <!-- A button to hide the div -->
             <button onclick="exitUpgrades()">❌</button>
         </div>
         <div>
-             <ul id="upgradesList" class="upgradesList">
-                <!-- Insert Parts here -->
+            <!-- A container that displays every upgrade bought -->
+             <div id="upgradesList" class="upgradesList">
+                <!-- Insert Upgrades here -->
                 <p><span>Upgrade 1 (+1 click):</span><span id="totalUpgrade1">0</span></p>
                 <p><span>Upgrade 2 (+.2 multiplier):</span><span id="totalUpgrade2">0</span></p>
                 <p><span>Upgrade 3 (+1 autoclick):</span><span id="totalUpgrade3">0</span></p>
@@ -65,23 +71,29 @@
                 <p><span>Total multiplier: </span><span id="TotalMultiplier"></span></p>
                 <p><span>Total autoclickers: </span><span id="TotalAutoclickers"></span></p>
                 <p><span>Total Rebirths: </span><span id="totalRebirthCount"></span></p>
-            </ul>
+             </div>
         </div>
     </div>
-    <div class="game-container jersey-10-regular" id="gameContainer">
+    <!-- All the main content of the game containing every inital visible object -->
+    <main class="game-container jersey-10-regular" id="gameContainer">
+        <!-- The left container -->
         <div class="left-container" id="leftContainer">
+            <!-- The title of the game -->
             <div class="left-container-header" id="leftContainerHeader">
                 <h1 class="pixelify-sans-font">Space Clicker!</h1>
             </div>
+            <!-- The inners of the left container -->
             <div class="left-container-inners" id="leftContainerInners">
-                <!-- <p style="color: white; position: absolute ; z-index: 100;" id="plus">+1</p> -->
+                <!-- A container for the img -->
                 <div class="Clicker-display" id="clickerDisplay">
+                    <!-- The main object of the game of how to gain money -->
                     <img src="SpinningPlanet.gif" id="Clickerimg" class="Clickerimg" onclick="enlargeItem(this)" alt="Planet Gif"> 
                 </div>
             </div>
         </div>
-        <div class="cloudWall-1">
-        </div>
+        <!-- A wall to seperate the Left and Middle container -->
+        <div class="cloudWall-1"></div>
+        <!-- THe middle container -->
         <div class="middle-container" id="middleContainer">
             <div class="middle-container-header" id="middleContainerHeader">
                 <h1 class="pixelify-sans-font">User Interface</h1>
@@ -107,21 +119,24 @@
                 </div>
             </div>
         </div>
-        <div class="cloudWall-2">
-        </div>
+        <!-- A wall to seperate the Middle and RIght containers -->
+        <div class="cloudWall-2"></div>
+        <!-- The right container -->
         <div class="right-container" id="rightContainer">
+            <!-- The container for the header and to switch between pages -->
             <div class="right-container-header" id="rightContainerHeader">
-                <h1 class="pixelify-sans-font" id="rightContainerHeaderTitle">Upgrades</h1>
+                <h1 class="pixelify-sans-font right-container-header-title" id="rightContainerHeaderTitle">Upgrades</h1>
+                <!-- The arrows to switch the page -->
                 <div class="RightHeaderControls" id="RightHeaderControls">
                     <div id="leftArrow" class="leftArrow">
                         <p>⬅</p>
                     </div>
                     <div id="rightArrow" class="rightArrow">
-                        <!-- <img src="" style="width: 50px;"> -->
                         <p>➡</p>
                     </div>
                 </div>
             </div>
+            <!-- A container for all the upgrades -->
             <div class="right-container-inners" id="rightContainerInners">
                 <div id="firstUpgrade"><span> +1 per click</span><span id="FirstCost"></span></div>
                 <div id="secondUpgrade"><span> + .2 multiplier</span><span id="SecondCost"></span></div>
@@ -140,10 +155,12 @@
                 <div id="FifthSuperUpgrade" class="hidden"><span>Build Rocket Ship</span><span id="FifthSuperCost">$$$</span></div>
             </div>
         </div>
-    </div>
-    <div class="progressBar" id="progressBar">
+    </main>
+    <!-- A progression meter that tell you how much percent you are towards the next rebirth -->
+    <section class="progressBar" id="progressBar">
         <div class="progress" id="progress"><h1 class="jersey-10-regular">Progress</h1></div>
-    </div>
+    </section>
+    <!-- A footer to display my credentials and copright claim -->
     <footer style="color: white; border: 1px solid white; width: 80%; margin: 15px; padding: 5px; text-align: center;">&copy; 2025 Joseph Mendias</footer>
     <script src="script.js"></script>
 </body>
