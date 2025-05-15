@@ -1,575 +1,127 @@
-# The CSS read me
-a General description for every style, class, or id
-```
-*{
-    padding: 0;
-    margin: 0;
-}
-body{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-image: url(SpaceBackground.webp);
-    background-repeat: repeat;
-    /* background-size: cover; */
-    height: 100%;
-}
-/* A basic navbar style to display at the top of the page */
-.navBar{
-    display: flex;
-    justify-content: space-evenly;
-    color: white;
-    width: 80%;
-    align-items: center;
-    padding: 10px;
-    border: 1px solid white;
-}
-/* The general Container for all visible elements */
-.game-container{
-    display: grid;
-    grid-template-columns: 1fr 2% 1fr 2% 1fr;
-    margin: 10px;
-    height: 80vh;
-    max-height: 700px;
-}
-/* Left Container Contents */
-.left-container {
-    grid-column: 1;
-    /* height: 100%;     */
-    border: 1px solid white;
-    background-color: black;
-}
-/* The header of the left container */
-.left-container-header{
-    display: flex;
-    justify-content: center;
-    background-color: blue;
-    color: powderblue;
-    height: 15%;
-    text-align: center;
-    align-items: center; 
+Here’s a **README** file for the **CSS file (`styles.css`) only**, focusing on its structure, styling choices, and custom components.
 
-}
-/* Defines the inside of the left container containing the clickable img */
-.left-container-inners{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 85%;
-    background-image: url(giphy.gif);
-    background-size: cover;
-    position: relative;
-}
-.Clicker-display{
-    /* border: 1px solid black; */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 80%;
-    rotate: 10deg;
-    animation: tilt 8s infinite ease-in-out;
-    transform-origin: center;
-    transition: transform 0.3s ease;
-    
-}
-/* Key frames for rotating an element */
-@keyframes tilt {
-    0%   { transform: rotate(0deg); }
-    25%  { transform: rotate(10deg); }
-    50%  { transform: rotate(0deg); }
-    75%  { transform: rotate(10deg); }
-    100% { transform: rotate(0deg); }
-}
+---
 
-@keyframes tilt2 {
-    0%   { transform: rotate(-20deg); }
-    25%  { transform: rotate(0deg); }
-    50%  { transform: rotate(20deg); }
-    75%  { transform: rotate(0deg); }
-    100% { transform: rotate(-20deg); }
-}
+## README - `styles.css`
 
-/* To define the size and radius of the img */
-.Clickerimg{
-    border-radius: 100%; 
-    width: 100%; 
-    height: 100%;
-}
-/* Middle Container Contents */
-.middle-container{
- grid-column: 3;
- /* height: 100%;     */
- border: 1px solid white;
- /* background-color: black; */
-}
-/* Middle container header */
-.middle-container-header{
-    display: flex;
-    justify-content: center;
-    background-color: blue;
-    color: powderblue;
-    height: 15%;
-    text-align: center;
-    align-items: center; 
-}
-/* A style to define all the elements withing the middle container */
-.middle-container-inners{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-/* All below is to deal with the inners of the middle containers */
-/* Displays the recent alerts when clicking on a upgrade */
-.AlertBox{
-    background-color: darkorange;
-    margin: 5px 10px 5px 10px;
-    padding: 10px;
-    border: 3px solid orange;
-    width: 80%;
-    /* height: 80%; */
-    max-height: 200px;
-    overflow: hidden;
-}
-.AlertBox-inners{
-    display: flex;
-    justify-content: flex-start;
-    flex-direction: column;
-    overflow: hidden;
-}
-/* Displays your current cash */
-.CashCount-box{
-    background-color: darkgreen;
-    margin: 5px 10px 5px 10px;
-    padding: 10px;
-    border: 3px solid lightgreen;
-    height: 10%;
-    width: 80%;
+### Overview
 
-}
-.CashCount{
-    font-size: 20px;
-    color: white;
-    font-weight: 2px;
-}
-/*  */
-/* Save and load features */
-.progress-box{
-    display: flex;
-    justify-content: space-between;
-    background-color: cornflowerblue;
-    margin: 5px 10px 5px 10px;
-    padding: 10px;
-    border: 3px solid powderblue;
-    width: 80%;
-    max-height: 80%;
-}
-.progress-box button{
-    width: 30%;
-    font-size: 16px;
-    border: 3px solid black;
+The `styles.css` file provides the complete styling for a web-based clicker game, themed around space exploration. It defines the visual layout, responsive behaviors, and aesthetic feel of all UI components, including navigation, game containers, modals, and interactive elements.
 
-}
-/* Hold the inventory, upgrades, and theme changer */
-.Interface{
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    background-color: cornflowerblue;
-    margin: 5px 10px 5px 10px;
-    padding: 10px;
-    border: 3px solid white;
-    height: 10%;
-    width: 80%;
-}
-/* A general style to apply to all the buttons withing the interface */
-.Interface button{
-    padding: 3px;
-    background-color: blue;
-    border: 3px solid powderblue;
-    font-size: 16px;
-    width: 30%;
-    color: powderblue;
-    text-align: center;
-    overflow: hidden;
-}
-/* The style for the inventory */
-.Inventory{
-    margin-top: 10%;
-    z-index: 100;
-    position: absolute;
-    flex-direction: column;
-    display: none;
-    /* align-items: center; */
-    color: blue;
-    border: 5px solid White;
-    background-color: powderblue;
-    padding: 10px;
-    width: 40%;
-    height: 60%;
-    overflow: scroll;
-}
-/* A style for the table within the inventory */
-.partsList{
-    display: flex;
-    width: 100%;
-    justify-content: flex-start;
-    border: 1px solid blue;
-}
-.partsList tr{
-    border: 1px solid blue;
-    padding: 2px;
-}
-.partsList td{
-    border: 1px solid blue;
-    padding: 2px;
-}
-/* A style for the upgrade list */
-.Upgrades{
-    margin-top: 10%;
-    z-index: 100;
-    position: absolute;
-    flex-direction: column;
-    display: none;
-    /* align-items: center; */
-    color: blue;
-    border: 5px solid White;
-    background-color: powderblue;
-    padding: 10px;
-    width: 40%;
-    height: 60%;
-    overflow: scroll;
-}
-/* A general style for every element within the Upgrades list */
-.upgradesList p{
-    margin-top: 10px;
-    display: flex;
-    justify-content: space-between;
-}
-/* All above is to deal with the middle container inners */
-/* Right Container COntents */
-.right-container{
-    grid-column: 5;
-    /* height: 100%;     */
-    border: 1px solid white;
-    background-color: black;
-    overflow: scroll;
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */ 
-    overflow-x: hidden;
-}
-/* Hides the scrollbar for the right container */
-.right-container::-webkit-scrollbar {
-    display: none;
-}
-/* The right container header */
-.right-container-header{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background-color: blue;
-    color: powderblue;
-    height: 15%;
-    text-align: center;
-    align-items: center; 
-}
-/* The right header contols for the arrows */
-.RightHeaderControls{
-    display: none;
-    justify-content: space-between;
-    align-items: center;
-    width: 80%;
-}
-/* The arrows that switch the pages */
-.rightArrow{
-    font-size: 30px;
-    display: flex;
-    align-items: center;
-    border: 3px solid black;
-}
-.leftArrow{
-    border: 3px solid black;
-    display: flex;
-    align-items: center;
-    font-size: 30px;
-}
-/* A container that holds all the upgrades */
-.right-container-inners{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* height: max-content; */
-}
-/* A general style to apply to every upgrade */
-.right-container-inners div{
-    cursor: pointer;
-    background-color: powderblue;
-    color: blue;
-    display: flex;
-    align-items: center;
-    justify-content: space-around; 
-    font-size: 22px;   
-    border: 1px solid white;
-    width: 80%;
-    height: 50px;
-    padding: 3px;
-    margin: 10px;
-    border-radius: 20px;
-}
+---
 
-/* A general style to apply to every upgrade of the second page */
-.right-container-inners-upgraded{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* height: max-content; */
-}
-.right-container-inners-upgraded div{
-    cursor: pointer;
-    background-color: powderblue;
-    color: blue;
-    display: flex;
-    align-items: center;
-    justify-content: space-around; 
-    font-size: 22px;   
-    border: 1px solid white;
-    width: 80%;
-    height: 50px;
-    padding: 3px;
-    margin: 10px;
-    border-radius: 20px;
-}
+### Global Styles
 
-/* The percentage bar that displays how far you need to rebirth */
-.progressBar{
-    border: 3px solid white;
-    width: 90%;
-    height: 35px;
-}
-.progress{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    width: 1%;
-    background-color: green;
-    color: white;
-    text-shadow: 3px 3px black;
-    overflow: hidden;
-}
-/* The highlited style that tells you wether if you can afford the upgrade */
-.Affordable{
-    border: 5px solid greenyellow;
-}
-.UnAffordable:hover{
-    border: 5px solid red;
-}
+* **Reset Defaults:**
 
-/* Temporarily enlarge the item */
-.enlarge {
-    transform: scale(1.2);
-}
-/* If the item is clickable it puts it as curson:pointer over it */
-.clickable-item {
-    cursor: pointer;
-    transition: transform 0.3s ease;
-}
-/* The tips container in the inventory */
-.TipsList{
-    margin: 3px;
-    padding: 5px;
-    line-height: 25px;
-}
-/* Style to make the links orange and underlined when hovered */
-.LinkClass{
-    color: orange;
-    text-decoration: none;
+  ```css
+  * {
+      padding: 0;
+      margin: 0;
+  }
+  ```
 
-}
-.LinkClass:hover{
-    text-decoration: underline;
-}
+  Resets default browser spacing to create a consistent baseline.
 
-/* Fonts */
-.pixelify-sans-font {
-    font-family: "Pixelify Sans", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: normal;
-    font-style: normal;
-}
-.jersey-10-regular {
-    font-family: "Jersey 10", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-}
-/* To make the elements not dragable, a minor inconvience fixer */
-.noselect {
-    -webkit-touch-callout: none; /* iOS Safari */
-      -webkit-user-select: none; /* Safari */
-       -khtml-user-select: none; /* Konqueror HTML */
-         -moz-user-select: none; /* Old versions of Firefox */
-          -ms-user-select: none; /* Internet Explorer/Edge */
-              user-select: none; /* Non-prefixed version, currently
-                                    supported by Chrome, Edge, Opera and Firefox */
-}
-/* Hides the element when applied */
-.hidden{
-    display: none!important;
-}
-/* Media Quereys to make it compatable with other devices */
-@media screen and (max-width: 772px) {
-    .game-container{
-        display: grid;
-        grid-template-columns: 1fr 2% 1fr 2% 1fr;
-        margin: 10px;
-        height: 60vh;
-        max-height: 700px;
-        overflow-y: hidden;
-    }
-    .right-container-inners div{
-        font-size: 14px;
-    }
-    .right-container-inners-upgraded div{
-        font-size: 14px;
-    }
-    .right-container-header{
-        font-size: 12px;
-    }
-    .middle-container-header{
-        font-size: 10px;
-    }
-    .left-container-header{
-        font-size: 12px;
-    }
-    .CashCount-box{
-        background-color: darkgreen;
-        margin: 2px 2px 2px 2px;
-        padding: 5px;
-        border: 3px solid lightgreen;
-        height: 10%;
-        width: 60%;
-    
-    }
-    .CashCount{
-        font-size: 14px;
-        color: white;
-        font-weight: 2px;
-    }
-    .progress-box button{
-        font-size: 10px;
-    }
-    .progressBar{
-        border: 1px solid white;
-        width: 60%;
-        height: 20px;
-        font-size: 10px;
-    }
-    .Interface{
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-        background-color: cornflowerblue;
-        margin: 2px 2px 2px 2px;
-        padding: 2px;
-        border: 3px solid white;
-        height: 10%;
-        width: 60%;
-    }
-    .Interface button{
-        padding: 3px;
-        background-color: blue;
-        border: 3px solid powderblue;
-        font-size: 8px;
-        width: 30%;
-        color: powderblue;
-    }
-    .AlertBox{
-        background-color: darkorange;
-        font-size: 8px;
-        margin: 2px 2px 2px 2px;
-        padding: 10px;
-        border: 3px solid orange;
-        width: 60%;
-        overflow: hidden;
-    }
-    .progress-box{
-        display: flex;
-        justify-content: space-between;
-        background-color: cornflowerblue;
-        margin: 2px 2px 2px 2px;
-        padding: 2px;
-        border: 3px solid powderblue;
-        width: 60%;
-        max-height: 80%;
-        font-size: 8px;
-    }
-    .right-container-header{
-        /* display: flex; */
-        /* flex-direction: column; */
-        /* justify-content: center; */
-        background-color: blue;
-        color: powderblue;
-        /* height: 15%; */
-        text-align: center;
-        align-items: center; 
-        position: relative;
-    }
-    .RightHeaderControls{
-        display: none;
-        justify-content: space-between;
-        align-items: center;
-        width: 90%;
-        position: absolute;
-    }
-    .rightArrow{
-        font-size: 30px;
-        display: flex;
-        align-items: center;
-        border: none;
-        color: blue;
-    }
-    .leftArrow{
-        border: none;
-        color: blue;
-        display: flex;
-        align-items: center;
-        font-size: 30px;
-    }
-    .right-container-inners div{
-        font-size: 10px;
-    }
-}
-@media screen and (max-width: 600px){
-    .Interface{
-        margin: 2px 1px 2px 1px;
-        border: 1px solid white;
-    }
-    .Interface button{
-        padding: 3px;
-        background-color: blue;
-        border: 1px solid powderblue;
-        font-size: 6px;
-        width: 30%;
-        color: powderblue;
-        text-align: center;
-    }
-    .AlertBox{
-        margin: 2px 2px 2px 2px;
-        padding: 5px;
-        border: 1px solid orange;
-        width: 80%;
-    }
-    .progress-box{
-        margin: 2px 1px 2px 1px;
-        border: 1px solid powderblue;
-        width: 80%;
-    }
-    .Interface{
-        margin: 1px 2px 1px 2px;
-        border: 1px solid white;
-        width: 80%;
-    }
-    .middle-container-header{
-        font-size: 8px;
-    }
-}
-```
+* **Body:**
+
+  ```css
+  body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-image: url(SpaceBackground.webp);
+      background-repeat: repeat;
+      height: 100%;
+  }
+  ```
+
+  Applies a space-themed background and centers the layout.
+
+---
+
+### Navigation Bar
+
+* `.navBar`: Top section displaying time and links with centered content and borders.
+
+---
+
+### Game Container
+
+* `.game-container`: Uses a 5-column CSS grid to layout the **left**, **middle**, and **right** UI sections with visual separators (`2%` gaps).
+
+---
+
+### Section Breakdown
+
+#### Left Container (`.left-container`)
+
+* Contains the main clickable image.
+* `.Clicker-display` has an animated "tilt" effect.
+* `.Clickerimg` is a circular, responsive image.
+
+#### Middle Container (`.middle-container`)
+
+* Contains:
+
+  * `.CashCount-box`: Shows current player cash.
+  * `.progress-box`: Save/load/delete buttons.
+  * `.Interface`: Game control buttons (Inventory, Upgrades, Theme).
+  * `.AlertBox`: Logs game events like purchases.
+
+#### Right Container (`.right-container`)
+
+* Displays all available upgrades.
+* `.right-container-inners` and `.right-container-inners-upgraded`: Different layouts for normal and "rebirth" upgrades.
+
+---
+
+### Theming and Effects
+
+* **Animations:**
+
+  * `@keyframes tilt`: Rotates the image gently.
+  * `@keyframes tilt2`: Used for effects like click bounce.
+
+* **Theme Support:**
+
+  * Supports dark and light themes by altering background and text colors dynamically.
+
+* **Responsive Design:**
+
+  * Media queries for screens <772px adjust font sizes, layout widths, and component spacing for mobile-friendliness.
+
+---
+
+### Utility Classes
+
+* `.noselect`: Disables user text selection.
+* `.hidden`: Fully hides elements using `display: none !important`.
+* `.Affordable`, `.UnAffordable:hover`: Used to visually indicate affordability of upgrades.
+* `.clickable-item`: Applies a hover effect and scale transformation.
+
+---
+
+### Modals
+
+* `.Inventory`, `.Upgrades`: Hidden by default; shown via JavaScript when triggered.
+* Contain custom tables and upgrade lists with defined borders and scroll behaviors.
+
+---
+
+### Fonts & Links
+
+* Custom fonts loaded from Google Fonts (`Pixelify Sans`, `Jersey 10`, etc.).
+* `.LinkClass`: Styled hyperlinks that change on hover.
+
+---
+
+## Recommendations
+
+* Consider modularizing CSS with SASS or CSS modules for scalability.
+* Use CSS variables for theme management to simplify toggling.
+* Add transition effects to improve modal and button interactions.
+
+---
+
+Let me know if you’d like the README in Markdown file format or included in the project!
