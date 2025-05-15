@@ -136,6 +136,7 @@ let totalUpgrade9amount = 0
 let totalSuperUpgrade1amount = 0
 let totalSuperUpgrade2amount = 0
 
+//A function that limits numbers to a smaller name by giving it a indicator once it passes a certian value
 function addThousandSeparators(number) {
     if(number >= 1000000){
         if(number >= 1000000000){
@@ -155,6 +156,7 @@ function addThousandSeparators(number) {
     
     return number.toLocaleString();
 }
+//It calls each value of every upgrade to list its cost
 function callAllCostValues(){
     FirstCost.textContent = `Cost:$${addThousandSeparators(Math.floor(CostFirst))}`
     SecondCost.textContent = `Cost:$${addThousandSeparators(Math.floor(CostSecond))}`
@@ -174,6 +176,7 @@ function callAllCostValues(){
 }
 callAllCostValues()
 
+//Saves your theme preference
 theme = Number(localStorage.getItem("theme"))
 console.log(theme)
 if (theme != 1){
@@ -181,7 +184,7 @@ if (theme != 1){
     ChangeTheme()
 }
 
-
+//Changes theme once the button is clicked
 function ChangeTheme(){
     console.log("Here")
     if(theme == 1){
@@ -212,6 +215,8 @@ function ChangeTheme(){
         rightContainerHeader.style.borderRadius = "40px"
         middleContainerHeader.style.borderRadius = "40px"
         leftContainerHeader.style.borderRadius = "40px"
+        leftArrow.style.color = "orange"
+        rightArrow.style.color = "orange"
         theme = 0
         localStorage.setItem("theme", theme)
     }else if(theme == 0){
@@ -240,11 +245,13 @@ function ChangeTheme(){
         rightContainerHeader.style.borderRadius = "0px"
         middleContainerHeader.style.borderRadius = "0px"
         leftContainerHeader.style.borderRadius = "0px"
+        leftArrow.style.color = "blue"
+        rightArrow.style.color = "blue"
         theme = 1
         localStorage.setItem("theme", theme)
     }
 }
-
+//Gets every cookie in use, Not in use curently
 function getCookie(cookieName) {
     const name = cookieName + "=";
     const decodedCookie = decodeURIComponent(document.cookie);
@@ -260,7 +267,7 @@ function getCookie(cookieName) {
     }
     return "";
 }
-// AlertBoxInners.innerHTML += "Hi"
+//Saves each value needed to play the game in the local storage
 function save(){
     console.log("File saved")
     localStorage.setItem("cash", cash)
@@ -335,7 +342,7 @@ function save(){
     AlertBoxInners.innerHTML += `<p style="color: Green; font-size: bold;">Saved Progress!<p>`
 
 }
-
+//Pulls each value out of the local storage
 function load(){
     console.log("File Loaded")
     cash = Number(localStorage.getItem("cash"))//Number(getCookie('cash'))
@@ -404,17 +411,9 @@ function load(){
         RightHeaderControls.style.display = "flex"
     }
 }
-
+//Deletes all values in the local storage
 function deleteAll() {
-    // if (document.cookie && document.cookie !== '') {
-    //     const cookies = document.cookie.split(';');
-    //     for (let i = 0; i < cookies.length; i++) {
-    //         const cookie = cookies[i];
-    //         const parts = cookie.split('=');
-    //         const name = parts.shift();
-    //         document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/;';
-    //     }
-    // }
+    //Deletes all locally stored values
     if(confirm("Are you sure you want to delete your progress???")){
         localStorage.clear()
     } else{
@@ -423,7 +422,9 @@ function deleteAll() {
     AlertBoxInners.innerHTML += "<p>Deleted All Progress<p>"
 }
 
+//Upon clicking an element that uses this function is enlarges it slightly
 function enlargeItem(imgElement) {
+    //Lets the Gif Shown its clicked by growing in size for a milisecond
     imgElement.style.transition = "transform 0.001s ease";
     imgElement.style.transform = "scale(1.1)";
 
@@ -431,8 +432,9 @@ function enlargeItem(imgElement) {
         imgElement.style.transform = "scale(1)";
     }, 300);
 }
-
+//A real time clock
 function updateClock() {
+    //Keeps track of the current time to display a real time clock
     const now = new Date();
     let hours = now.getHours();
     let minutes = now.getMinutes();
@@ -454,8 +456,9 @@ let second = 0
 let minute = 0
 let hour = 0
 
+//Tells how much time has been spent in the browser, Deletes upon refreshing or quiting the browser
 function TotalTimeSpent(){
-   
+   //Shows how long the browser has not been open
     second++
     if (second >= 60){
         second = 0
@@ -471,11 +474,14 @@ function TotalTimeSpent(){
 }
 TotalTimeSpent()
 
+//These two functions allow for the upgrade list to be switched once the user rebirths
 function changeUpgrades(){
     page = 2
     rightContainerHeader.style.backgroundColor = "orange"
     rightContainerHeader.style.color = "blue"
     rightContainerHeaderTitle.textContent = "Super Upgrades"
+    leftArrow.style.color = "blue"
+    rightArrow.style.color = "blue"
     firstUpgrade.classList.add("hidden")
     secondUpgrade.classList.add("hidden")
     thirdUpgrade.classList.add("hidden")
@@ -496,7 +502,6 @@ function changeUpgrades(){
     rightContainerInners.classList.remove("right-container-inners")
     callAllCostValues()
 }
-
 function changeUpgradesBack(){
     page = 1
     if(theme){
@@ -506,6 +511,8 @@ function changeUpgradesBack(){
         rightContainerHeader.style.backgroundColor = "cornflowerblue"
         rightContainerHeader.style.color = "powderblue"
     }
+    leftArrow.style.color = "orange"
+    rightArrow.style.color = "orange"
     rightContainerHeaderTitle.textContent = "Upgrades"
     firstUpgrade.classList.remove("hidden")
     secondUpgrade.classList.remove("hidden")
@@ -527,6 +534,7 @@ function changeUpgradesBack(){
     callAllCostValues()
 }
 
+//Calculates evey variable that can affect the multiplier or iterative value of gaining money and then gives that amount of cash to the total
 function addMoney(){
     console.log(CurrentClickValue)
     CurrentClickValue = ((1 + additionalClicks) * multiplier) * (1 + (totalRebriths))
@@ -534,6 +542,7 @@ function addMoney(){
     cashCount.textContent = `${addThousandSeparators((Math.round(cash * 100) / 100))}`
 }
 
+//A function that gives you a part neccessary to complete the game
 function findPart(){
     let RandomNumber = Math.floor((Math.random() * 5) + 1);
     //Random Number 1-5 to determine which part to get
@@ -579,6 +588,7 @@ function findPart(){
     }
 }
 
+//Uses an onlick with HTML to determines when the element is clicked
 function ClickIndication(){
     console.log("click")
     addMoney()
@@ -593,6 +603,7 @@ function ClickIndication(){
     initialNum++
 }
 
+//Everytime you click it displays the value of each click
 function ClickPlusOne(){
     let boxRect = leftContainerInners.getBoundingClientRect();
     const boxWidth = boxRect.width;
@@ -633,6 +644,7 @@ function ClickPlusOne(){
 
 }
 
+//It displays every upgrade or counted value that you have bought
 function checkUpgrades(){
     totalUpgrade1.textContent = `${totalUpgrade1amount}`
     totalUpgrade2.textContent = `${totalUpgrade2amount}`
@@ -651,23 +663,28 @@ function checkUpgrades(){
     totalRebirthCount.textContent = `${totalRebriths} Rebriths`
 }
 
+//Closes the inventory by displaying is at "none"
 function exitInventory(){
     Invetory.style.display = "none"
 }
 
+//Opens the inventory by displaying it as "flex"
 function openInventory(){
     Invetory.style.display = "flex"
 }
 
+//Opens the upgrades by displaying it as "flex"
 function openUpgrades(){
     checkUpgrades()
     Upgrades.style.display = "flex"
 }
 
+//Closes the upgrades by displaying is at "none"
 function exitUpgrades(){
     Upgrades.style.display = "none"
 }
 
+//Check your progress til the next rebirth and changes the bar at the bottom to the percentage remaining
 function progressCheck(){
     let Progression = (cash/CostTenth) * 100
     if (Progression > 100){
@@ -681,8 +698,10 @@ function progressCheck(){
 }
 setInterval(progressCheck, 1)
 
+//An empty array to display future actions such as buying a upgrade
 let alerts = []
 
+//Displays the array that keeps track of you activity
 function DisplayArray(){
     AlertBoxInners.innerHTML = " "
     for(let i = 0; i < alerts.length; i++){
@@ -690,6 +709,7 @@ function DisplayArray(){
     }
 }
 
+//Deletes the last element in the array to prevent an overflow of names
 function PopsArray() {
     // function DisplayArray(){
     //     for(let i = 0; i < alerts.length; i++){
@@ -710,6 +730,7 @@ let PopArray = setInterval(PopsArray, ConsolePopTime)
 PopArray
 setInterval(DisplayArray, 1)
 
+//The more elements in the array the faster the array will pop
 function ChangePopTime(){
     console.log("Here")
     console.log(ConsolePopTime)
@@ -735,6 +756,7 @@ function ChangePopTime(){
 
 }
 
+//Initilizes each upgrade button to be selected
 let SelectArray = [
     [CostFirst, firstUpgrade],
     [CostSecond, secondUpgrade],
@@ -753,6 +775,7 @@ let SelectArray = [
     [CostFifthSuper, FifthSuperUpgrade]
 ]
 
+//When hovering oven the button it calls "current" which tells it what button is being selected
 function select(){
     SelectArray = [
         [CostFirst, firstUpgrade],
@@ -781,6 +804,7 @@ function select(){
         SelectArray[current][1].style.border = ("5px solid greenyellow")
     }
 }
+//after the button is unselected it reverts back to how it was originally
 function unselect(){
     firstUpgrade.style.border = ("none")
     secondUpgrade.style.border = ("none")
@@ -799,6 +823,7 @@ function unselect(){
     FifthSuperUpgrade.style.border = ("none")
 }
 
+//A basic upgrade that adds +1 to "CurrentClickValue"
 function FiUpgrade(){
     console.log("First Upgrade")
     if(cash >= CostFirst){
@@ -816,6 +841,7 @@ function FiUpgrade(){
     FirstCost.textContent = `Cost:$${addThousandSeparators(Math.floor(CostFirst))}`
     checkUpgrades()
 }
+//A basic upgrade that adds .2 to "Multiplier"
 function SeUpgrade(){
     console.log("Second Upgrade")
     if(cash >= CostSecond){
@@ -832,6 +858,7 @@ function SeUpgrade(){
     SecondCost.textContent = `Cost:$${addThousandSeparators(Math.floor(CostSecond))}`
     checkUpgrades()
 }
+//A complex autoclick function that redefines the autoclick each time totaling to 1 click per upgrade
 function ThUpgrade() {
     console.log("Third Upgrade");
     
@@ -873,14 +900,14 @@ function ThUpgrade() {
     cashCount.textContent = `${addThousandSeparators(Math.round(cash * 100) / 100)}`;
     checkUpgrades()
 }
-
+//it works with the third upgrade to determine how many times its used
 function autoClick1(){
     for(i=0; i < totalAutoClickers1; i++){
         addMoney()
         cashCount.textContent = `${addThousandSeparators((Math.round(cash * 100) / 100))}`
     }
 }
-
+//A basic upgrade that adds +5 to "CurrentClickValue"
 function FoUpgrade(){
     console.log("Fourth Upgrade")
         if(cash >= CostFourth){
@@ -897,7 +924,7 @@ function FoUpgrade(){
         FourthCost.textContent = `Cost:$${addThousandSeparators(Math.floor(CostFourth))}`
         checkUpgrades()
 }
-
+//A basic upgrade that adds .5 to "Multiplier"
 function FifUpgrade(){
     console.log("Fifth Upgrade")
     if(cash >= CostFifth){
@@ -915,7 +942,7 @@ function FifUpgrade(){
     FifthCost.textContent = `Cost:$${addThousandSeparators(Math.floor(CostFifth))}`
     checkUpgrades()  
 }
-
+//A complex autoclick function that redefines the autoclick each time totaling to 3 click per upgrade
 function SiUpgrade(){
     console.log("Sixth Upgrade")
     console.log(maxAutoClickers2)
@@ -945,7 +972,7 @@ function SiUpgrade(){
     cashCount.textContent = `${addThousandSeparators((Math.round(cash * 100) / 100))}`
     checkUpgrades()
 }
-
+//it works with the sixth upgrade to determine how many times its used
 function autoClick2(){ 
     console.log(totalAutoClickers2)
     for(i = 0; i < totalAutoClickers2; i++){
@@ -955,7 +982,7 @@ function autoClick2(){
         }
     }
 }
-
+//A basic upgrade that adds +20 to "CurrentClickValue"
 function SevUpgrade(){
     console.log("Seventh Upgrade")
     if(cash >= CostSeventh){
@@ -972,7 +999,7 @@ function SevUpgrade(){
     SeventhCost.textContent = `Cost:$${addThousandSeparators(Math.floor(CostSeventh))}`
     checkUpgrades()
 }
-
+//A basic upgrade that adds 3 to "Multiplier"
 function EiUpgrade(){
     console.log("Eighth Upgrade")
     if(cash >= CostEighth){
@@ -990,7 +1017,7 @@ function EiUpgrade(){
     EighthCost.textContent = `Cost:$${addThousandSeparators(Math.floor(CostEighth))}`
     checkUpgrades()
 }
-
+//A complex autoclick function that redefines the autoclick each time totaling to 10 click per upgrade
 function NiUpgrade(){
     console.log("Ninth Upgrade")
     if(maxAutoClickers3 < 20) {
@@ -1022,7 +1049,7 @@ function NiUpgrade(){
     cashCount.textContent = `${addThousandSeparators((Math.round(cash * 100) / 100))}`
     checkUpgrades()
 }
-
+//it works with the ninth upgrade to determine how many times its used
 function autoClick3(){
     for(i = 0; i < totalAutoClickers3; i++){
         for(a=0; a < 10; a++){
@@ -1031,7 +1058,7 @@ function autoClick3(){
         }
     }
 }
-
+//It refreshes everything for a slight money boost and unlocks the next upgrades
 function rebirth(){
     console.log("rebirthed")
     if(cash >= CostTenth){
@@ -1053,7 +1080,7 @@ function rebirth(){
 
     }
 }
-
+//Resets every value that is used
 function resetNum(){
     console.log("Reset Numbers")
     CostFirst = 10
@@ -1116,7 +1143,7 @@ function resetNum(){
     EighthCost.textContent = `Cost:$${addThousandSeparators(Math.floor(CostEighth))}`
     NinthCost.textContent = `Cost:$${addThousandSeparators(Math.floor(CostNinth))}`
 }
-
+//A super upgrade that adds 300 to "CurrentClickValue"
 function FiSuperUpgrade(){
     if(cash >= CostFirstSuper){
         console.log("First Super Upgrade")
@@ -1133,7 +1160,7 @@ function FiSuperUpgrade(){
     FirstSuperCost.textContent = `Cost:$${addThousandSeparators(Math.floor(CostFirstSuper))}`
     checkUpgrades()
 }
-
+//A super upgrade that adds 100 to "Multiplier"
 function SeSuperUpgrade(){
     if(cash >= CostSecondSuper){
         console.log("Second Super Upgrade")
@@ -1150,7 +1177,7 @@ function SeSuperUpgrade(){
     SecondSuperCost.textContent = `Cost:$${addThousandSeparators(Math.floor(CostSecondSuper))}`
     checkUpgrades()
 }
-
+//A discounter that divides every upgrade by 10
 function ThSuperUpgrade(){
     if(cash >= CostThirdSuper){
         console.log("third Super Upgrade")
@@ -1165,7 +1192,7 @@ function ThSuperUpgrade(){
     cashCount.textContent = `${addThousandSeparators((Math.round(cash * 100) / 100))}`
     ThirdSuperCost.textContent = `Cost:$${addThousandSeparators(Math.floor(CostThirdSuper))}`
 }
-
+//Finds a part that is required to complete the game which doubles in price each time but is limited to a max of 1Trillion
 function FoSuperUpgrade(){
     if(cash >= CostFourthSuper){
         console.log("Fourth Super Upgrade")
@@ -1183,7 +1210,7 @@ function FoSuperUpgrade(){
     cashCount.textContent = `${addThousandSeparators((Math.round(cash * 100) / 100))}`
     FourthSuperCost.textContent = `Cost:$${addThousandSeparators(Math.floor(CostFourthSuper))}`
 }
-
+//When all the conditions of 50parts, 5rebirths, and 50Quintillian dollars are met it completes the game
 function FifSuperUpgrade(){
     if(cash >= CostFifthSuper){
         if(totalRebriths >= 5){
@@ -1200,7 +1227,7 @@ function FifSuperUpgrade(){
         alerts.unshift(`<p style="color: red; font-size: bold;">Not Enough money<p>`)
     }
 }
-
+//Is called by ThirdSuperUpgrade and it reduces the prices of upgrades
 function discount(){
     CostFirst = CostFirst/10
     CostSecond = CostSecond/10
@@ -1217,6 +1244,8 @@ function discount(){
     callAllCostValues() 
 }
 
+//Current is used to define which button is being hovered over
+//Event listeners figure out when a button is either clicked or hovered over
 firstUpgrade.addEventListener('click', FiUpgrade)
 firstUpgrade.addEventListener('mouseout', unselect)
 firstUpgrade.addEventListener('mousemove', function(){
@@ -1337,31 +1366,19 @@ FifthSuperUpgrade.addEventListener('mousemove', function(){
     console.log(current)
 })
 
+//used to switch between upgrade pages
 rightArrow.addEventListener('click', changeUpgrades)
 leftArrow.addEventListener('click', changeUpgradesBack)
+//it tells the funtion ClickIndication to run each time you click the element
 clickerDisplay.addEventListener('click', ClickIndication)
 
-// document.addEventListener('keydown', function(event) {
-//     if (event.code === 'Space') {
-//       // Action to perform when spacebar is pressed
-//       console.log('Spacebar was pressed');
-//       cash = cash + 100000
-//       console.log(totalRebriths)
-//       cashCount.textContent = `${addThousandSeparators((Math.round(cash * 100) / 100))}`
-//     }
-// });
-
-const Name = prompt("Username")
-document.cookie = Name
-
-while(document.cookie.trim().toLowerCase() === "joseph"){
-    document.addEventListener('keydown', function(event) {
-        if (event.code === 'Space') {
-          // Action to perform when spacebar is pressed
-          console.log('Spacebar was pressed');
-          cash = cash + 100000
-          console.log(totalRebriths)
-          cashCount.textContent = `${addThousandSeparators((Math.round(cash * 100) / 100))}`
-        }
-    });
-}
+//When space is clicker it adds the value below to your cash, used for development only
+document.addEventListener('keydown', function(event) {
+    if (event.code === 'Space') {
+      // Action to perform when spacebar is pressed
+      console.log('Spacebar was pressed');
+      cash = cash + 100000000000
+      console.log(totalRebriths)
+      cashCount.textContent = `${addThousandSeparators((Math.round(cash * 100) / 100))}`
+    }
+});
