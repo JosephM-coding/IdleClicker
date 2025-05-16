@@ -1,50 +1,51 @@
----
-
 ## README - `styles.css`
 
 ### Overview
 
-The `styles.css` file provides the complete styling for a web-based clicker game, themed around space exploration. It defines the visual layout, responsive behaviors, and aesthetic feel of all UI components, including navigation, game containers, modals, and interactive elements.
+The `styles.css` file provides the complete styling for a web-based clicker game themed around **space exploration**. It sets the visual layout, animations, responsiveness, and aesthetic elements across all game UI components.
 
 ---
 
-### Global Styles
+### 🌍 Global Styles
 
-* **Reset Defaults:**
+#### Reset and Root Theme
 
-  ```css
-  * {
-      box-sizing: border-box;
-      padding: 0;
-      margin: 0;
-  }
-  ```
+```css
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+:root {
+    background-color: black;
+    color: powderblue;
+}
+```
 
-  Resets default browser spacing to create a consistent baseline.
-  Global Reset and Box model
+* Ensures consistent box model.
+* Sets default background and text color scheme for space theme.
 
-* **Body:**
+#### Body Styling
 
-  ```css
-  body {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      background-image: url(SpaceBackground.webp);
-      background-repeat: repeat;
-      height: 100%;
-  }
-  ```
+```css
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: url(SpaceBackground.webp);
+    background-repeat: repeat;
+    height: 100%;
+}
+```
 
-  Applies a space-themed background and centers the layout.
+* Centers the content and applies a repeating space-themed background.
 
 ---
 
-### Navigation Bar
+### 🧭 Navigation Bar
 
-* `.navBar`: Top section displaying time and links with centered content and borders.
-  ```css
-  .navBar{
+```css
+.navBar {
     display: flex;
     justify-content: space-evenly;
     color: white;
@@ -54,13 +55,17 @@ The `styles.css` file provides the complete styling for a web-based clicker game
     border: 1px solid white;
 }
 ```
+
+* Horizontally spaces out nav elements with a white border and white text.
+
 ---
 
-### Game Container
+### 🎮 Game Layout
 
-* `.game-container`: Uses a 5-column CSS grid to layout the **left**, **middle**, and **right** UI sections with visual separators (`2%` gaps).
+#### Grid Container
+
 ```css
-.game-container{
+.game-container {
     display: grid;
     grid-template-columns: 1fr 2% 1fr 2% 1fr;
     margin: 10px;
@@ -68,105 +73,178 @@ The `styles.css` file provides the complete styling for a web-based clicker game
     max-height: 700px;
 }
 ```
+
+* Defines a 5-column layout for left, middle, and right sections.
+
 ---
 
-### Section Breakdown
+### 🔻 Left Panel (`.left-container`)
 
-#### Left Container (`.left-container`)
-
-* Contains the main clickable image.
-* `.Clicker-display` has an animated "tilt" effect.
-* `.Clickerimg` is a circular, responsive image.
 ```css
 .left-container {
     grid-column: 1;
-    /* height: 100%;     */
     border: 1px solid white;
     background-color: black;
 }
-```
-
-#### Middle Container (`.middle-container`)
-
-* Contains:
-
-  * `.CashCount-box`: Shows current player cash.
-  * `.progress-box`: Save/load/delete buttons.
-  * `.Interface`: Game control buttons (Inventory, Upgrades, Theme).
-  * `.AlertBox`: Logs game events like purchases.
-```css
-.middle-container{
- grid-column: 3;
- /* height: 100%;     */
- border: 1px solid white;
- /* background-color: black; */
+.left-container-inners {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url(giphy.gif);
+    background-size: cover;
+}
+.Clicker-display {
+    animation: tilt 8s infinite ease-in-out;
+}
+.Clickerimg {
+    border-radius: 100%;
+    width: 100%;
+    height: 100%;
 }
 ```
 
-#### Right Container (`.right-container`)
+* Hosts the main clickable image with a rotating animation and circular styling.
 
-* Displays all available upgrades.
-* `.right-container-inners` and `.right-container-inners-upgraded`: Different layouts for normal and "rebirth" upgrades.
-  ```css
-  .right-container{
+---
+
+### ⚙️ Middle Panel (`.middle-container`)
+
+```css
+.middle-container {
+    grid-column: 3;
+    border: 1px solid white;
+}
+.CashCount-box {
+    background-color: darkgreen;
+    border: 3px solid lightgreen;
+}
+.progress-box button {
+    font-size: 16px;
+    border: 3px solid black;
+}
+.Interface button {
+    background-color: blue;
+    border: 3px solid powderblue;
+    color: powderblue;
+}
+```
+
+* Central control zone for displaying player stats, alerts, and control buttons.
+
+---
+
+### 🚀 Right Panel (`.right-container`)
+
+```css
+.right-container {
     grid-column: 5;
-    /* height: 100%;     */
     border: 1px solid white;
     background-color: black;
     overflow: scroll;
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */ 
-    overflow-x: hidden;
+    scrollbar-width: none;
+}
+.right-container-inners div {
+    background-color: powderblue;
+    color: blue;
+    border: 1px solid white;
+    border-radius: 20px;
 }
 ```
----
 
-### Theming and Effects
-
-* **Animations:**
-
-  * `@keyframes tilt`: Rotates the image gently.
-  * `@keyframes tilt2`: Used for effects like click bounce.
-
-* **Theme Support:**
-
-  * Supports dark and light themes by altering background and text colors dynamically.
-
-* **Responsive Design:**
-
-  * Media queries for screens <772px adjust font sizes, layout widths, and component spacing for mobile-friendliness.
+* Contains upgrade options with scroll hiding and hoverable card designs.
 
 ---
 
-### Utility Classes
+### 🎨 Animations & Effects
 
-* `.noselect`: Disables user text selection.
-* `.hidden`: Fully hides elements using `display: none !important`.
-* `.Affordable`, `.UnAffordable:hover`: Used to visually indicate affordability of upgrades.
-* `.clickable-item`: Applies a hover effect and scale transformation.
+```css
+@keyframes tilt {
+    0%, 100% { transform: rotate(0deg); }
+    25%, 75% { transform: rotate(10deg); }
+    50%      { transform: rotate(0deg); }
+}
 
----
+.clickable-item {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+.enlarge {
+    transform: scale(1.2);
+}
+```
 
-### Modals
-
-* `.Inventory`, `.Upgrades`: Hidden by default; shown via JavaScript when triggered.
-* Contain custom tables and upgrade lists with defined borders and scroll behaviors.
-
----
-
-### Fonts & Links
-
-* Custom fonts loaded from Google Fonts (`Pixelify Sans`, `Jersey 10`, etc.).
-* `.LinkClass`: Styled hyperlinks that change on hover.
-
----
-
-## Recommendations
-
-* Consider modularizing CSS with SASS or CSS modules for scalability.
-* Use CSS variables for theme management to simplify toggling.
-* Add transition effects to improve modal and button interactions.
+* Adds gentle rotation to clickable elements and a bounce effect on interaction.
 
 ---
 
-Let me know if you’d like the README in Markdown file format or included in the project!
+### 🧩 Modals (`.Inventory`, `.Upgrades`)
+
+```css
+.Inventory, .Upgrades {
+    display: none;
+    position: absolute;
+    background-color: powderblue;
+    color: blue;
+    border: 5px solid white;
+    padding: 10px;
+    height: 60%;
+    overflow: scroll;
+}
+```
+
+* Initially hidden and shown dynamically with JavaScript for inventory and upgrades.
+
+---
+
+### 📱 Responsive Design
+
+```css
+@media screen and (max-width: 772px) {
+    .Interface button {
+        font-size: 8px;
+    }
+    .AlertBox {
+        font-size: 8px;
+    }
+}
+```
+
+* Adjusts font sizes and widths for optimal mobile display.
+
+---
+
+### 📚 Utility Classes
+
+```css
+.hidden {
+    display: none !important;
+}
+.noselect {
+    user-select: none;
+}
+.Affordable {
+    border: 5px solid greenyellow;
+}
+.UnAffordable:hover {
+    border: 5px solid red;
+}
+```
+
+* Adds utility for toggling visibility, click feedback, and preventing unwanted text selection.
+
+---
+
+### 🔤 Fonts & Links
+
+```css
+.LinkClass {
+    color: orange;
+    text-decoration: none;
+}
+.LinkClass:hover {
+    text-decoration: underline;
+}
+```
+
+* Custom hyperlink styling and hover effect.
+* Fonts like `Pixelify Sans` and `Jersey 10` are used for game text.
