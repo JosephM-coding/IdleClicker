@@ -1,5 +1,3 @@
-Here’s a **README** file for the **CSS file (`styles.css`) only**, focusing on its structure, styling choices, and custom components.
-
 ---
 
 ## README - `styles.css`
