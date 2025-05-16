@@ -16,12 +16,14 @@ The `styles.css` file provides the complete styling for a web-based clicker game
 
   ```css
   * {
+      box-sizing: border-box;
       padding: 0;
       margin: 0;
   }
   ```
 
   Resets default browser spacing to create a consistent baseline.
+  Global Reset and Box model
 
 * **Body:**
 
