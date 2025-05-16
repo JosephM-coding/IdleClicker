@@ -3,6 +3,11 @@
     padding: 0;
     margin: 0;
 }
+:root{
+    background-color: black;
+    color: powderblue;
+}
+/* Initializes every element to have a background color of black and powderblue text to match with the color theme of the game */
 body{
     display: flex;
     flex-direction: column;
