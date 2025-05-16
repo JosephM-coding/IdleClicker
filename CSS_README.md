@@ -5,6 +5,25 @@
 The `styles.css` file provides the complete styling for a web-based clicker game themed around **space exploration**. It sets the visual layout, animations, responsiveness, and aesthetic elements across all game UI components.
 
 ---
+- global reset is used with the * selector
+- Css Variables use :root to initialize every element with a black background and powderblue color to math the game style
+- All the CSS is organized and well comented to give a brief explanation
+- Typrography Styling is used by a class name of pixelify-sans-font and jersey-10-regular
+- Color Scheme and COntrast are a blend of blue and black with a hint of orange
+- Flexbox and grid are both used set columns and simple text boxes such as Flex direction: column;
+- Buttons and Input styling are used to match their outer container
+- I use common classes such as hidden to be utilized throughout the code
+- I use CSS transitions to slowly rotate elements
+- I use Hover and focus effects to determine whether an upgrade is buyable or affordable
+- I use layout containers to determine the main game container and the left, right, and middle containers as well as their inner elements
+- I use Z index to layer elements that I want to be infront of others such as the inventory and Upgrade checker
+- I Impliment the Pseudo classes/elements with javascript applying it to newly created children made with append child
+- I use shadows and borders subtly with only a few text boxes
+- I use custom scroll bars to either change the size of the scroll bar or to hide it completely
+- Themes are applied dynamically or toggled
+- Naming Conventions are used to clearly describle what class is being used on which element
+- The code is clean and well commented
+
 
 ### Global Styles
 
