@@ -1082,66 +1082,72 @@ function rebirth(){
 }
 //Resets every value that is used
 function resetNum(){
-    console.log("Reset Numbers")
-    CostFirst = 10
-    CostSecond = 25
-    CostThird = 50
-    CostFourth = 1000
-    CostFifth = 2500
-    CostSixth = 10000
-    CostSeventh = 20000
-    CostEighth = 40000
-    CostNinth = 60000
-    totalUpgrade1amount = 0
-    totalUpgrade2amount = 0
-    totalUpgrade3amount = 0
-    totalUpgrade4amount = 0
-    totalUpgrade5amount = 0
-    totalUpgrade6amount = 0
-    totalUpgrade7amount = 0
-    totalUpgrade8amount = 0
-    totalUpgrade9amount = 0
-    totalSuperUpgrade1amount = 0
-    totalSuperUpgrade2amount = 0
+    try{
+        console.log("Reset Numbers")
+        CostFirst = 10
+        CostSecond = 25
+        CostThird = 50
+        CostFourth = 1000
+        CostFifth = 2500
+        CostSixth = 10000
+        CostSeventh = 20000
+        CostEighth = 40000
+        CostNinth = 60000
+        totalUpgrade1amount = 0
+        totalUpgrade2amount = 0
+        totalUpgrade3amount = 0
+        totalUpgrade4amount = 0
+        totalUpgrade5amount = 0
+        totalUpgrade6amount = 0
+        totalUpgrade7amount = 0
+        totalUpgrade8amount = 0
+        totalUpgrade9amount = 0
+        totalSuperUpgrade1amount = 0
+        totalSuperUpgrade2amount = 0
 
-    cash = 0
-    multiplier = 1
-    additionalClicks = 0
-    autoClickTimer = 1000
-    CCurrentClickValue = ((1 + additionalClicks) * multiplier) * (1 + (totalRebriths))
-    if (intervalId1) {
-        clearInterval(intervalId1);
-        clearInterval(autoClick3)
+        cash = 0
+        multiplier = 1
+        additionalClicks = 0
+        autoClickTimer = 1000
+        CCurrentClickValue = ((1 + additionalClicks) * multiplier) * (1 + (totalRebriths))
+        if (intervalId1) {
+            clearInterval(intervalId1);
+            clearInterval(autoClick3)
 
-        intervalId1 = null; // optional: reset the variable
-      }
-      if (intervalId2) {
-        clearInterval(intervalId2);
+            intervalId1 = null; // optional: reset the variable
+        }
+        if (intervalId2) {
+            clearInterval(intervalId2);
+        }
+        if (intervalId3) {
+            clearInterval(intervalId3);
+            clearInterval(autoClick3)
+            intervalId3 = null; // optional: reset the variable
+        }
+        // for(i = 0; i < maxAutoClickers1; i++){clearInterval(intervalId1)}
+        // for(i = 0; i < maxAutoClickers2; i++){clearInterval(intervalId2)}
+        // for(i = 0; i < maxAutoClickers3; i++){clearInterval(intervalId3)}
+        maxAutoClickers1 = 0
+        maxAutoClickers2 = 0
+        maxAutoClickers3 = 0
+        // intervalId1 = null
+        // intervalId2 = null
+        // intervalId3 = null
+
+        FirstCost.textContent = `Cost:$${addThousandSeparators(CostFirst)}`
+        SecondCost.textContent = `Cost:$${addThousandSeparators(CostSecond)}`
+        ThirdCost.textContent = `Cost:$${addThousandSeparators(CostThird)}`
+        FourthCost.textContent = `Cost:$${addThousandSeparators(CostFourth)}`
+        FifthCost.textContent = `Cost:$${addThousandSeparators(CostFifth)}`
+        SixthCost.textContent = `Cost:$${addThousandSeparators(CostSixth)}`
+        SeventhCost.textContent = `Cost:$${addThousandSeparators(Math.floor(CostSeventh))}`
+        EighthCost.textContent = `Cost:$${addThousandSeparators(Math.floor(CostEighth))}`
+        NinthCost.textContent = `Cost:$${addThousandSeparators(Math.floor(CostNinth))}`
+        
+    } catch(e){
+        console.error(e)
+        console.error("Numbers failed to reset")
     }
-      if (intervalId3) {
-        clearInterval(intervalId3);
-        clearInterval(autoClick3)
-        intervalId3 = null; // optional: reset the variable
-      }
-    // for(i = 0; i < maxAutoClickers1; i++){clearInterval(intervalId1)}
-    // for(i = 0; i < maxAutoClickers2; i++){clearInterval(intervalId2)}
-    // for(i = 0; i < maxAutoClickers3; i++){clearInterval(intervalId3)}
-    maxAutoClickers1 = 0
-    maxAutoClickers2 = 0
-    maxAutoClickers3 = 0
-    // intervalId1 = null
-    // intervalId2 = null
-    // intervalId3 = null
-
-    FirstCost.textContent = `Cost:$${addThousandSeparators(CostFirst)}`
-    SecondCost.textContent = `Cost:$${addThousandSeparators(CostSecond)}`
-    ThirdCost.textContent = `Cost:$${addThousandSeparators(CostThird)}`
-    FourthCost.textContent = `Cost:$${addThousandSeparators(CostFourth)}`
-    FifthCost.textContent = `Cost:$${addThousandSeparators(CostFifth)}`
-    SixthCost.textContent = `Cost:$${addThousandSeparators(CostSixth)}`
-    SeventhCost.textContent = `Cost:$${addThousandSeparators(Math.floor(CostSeventh))}`
-    EighthCost.textContent = `Cost:$${addThousandSeparators(Math.floor(CostEighth))}`
-    NinthCost.textContent = `Cost:$${addThousandSeparators(Math.floor(CostNinth))}`
 }
 //A super upgrade that adds 300 to "CurrentClickValue"
 function FiSuperUpgrade(){
