@@ -45,13 +45,32 @@ The `styles.css` file provides the complete styling for a web-based clicker game
 ### Navigation Bar
 
 * `.navBar`: Top section displaying time and links with centered content and borders.
+  ```
+  .navBar{
+    display: flex;
+    justify-content: space-evenly;
+    color: white;
+    width: 80%;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid white;
+}
+  ```
 
 ---
 
 ### Game Container
 
 * `.game-container`: Uses a 5-column CSS grid to layout the **left**, **middle**, and **right** UI sections with visual separators (`2%` gaps).
-
+```
+.game-container{
+    display: grid;
+    grid-template-columns: 1fr 2% 1fr 2% 1fr;
+    margin: 10px;
+    height: 80vh;
+    max-height: 700px;
+}
+```
 ---
 
 ### Section Breakdown
@@ -70,12 +89,27 @@ The `styles.css` file provides the complete styling for a web-based clicker game
   * `.progress-box`: Save/load/delete buttons.
   * `.Interface`: Game control buttons (Inventory, Upgrades, Theme).
   * `.AlertBox`: Logs game events like purchases.
+```
+.middle-container{
+ grid-column: 3;
+ /* height: 100%;     */
+ border: 1px solid white;
+ /* background-color: black; */
+}
+```
 
 #### Right Container (`.right-container`)
 
 * Displays all available upgrades.
 * `.right-container-inners` and `.right-container-inners-upgraded`: Different layouts for normal and "rebirth" upgrades.
-
+```
+.left-container {
+    grid-column: 1;
+    /* height: 100%;     */
+    border: 1px solid white;
+    background-color: black;
+}
+```
 ---
 
 ### Theming and Effects
