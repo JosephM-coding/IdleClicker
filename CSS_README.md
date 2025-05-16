@@ -55,8 +55,7 @@ The `styles.css` file provides the complete styling for a web-based clicker game
     padding: 10px;
     border: 1px solid white;
 }
-  ```
-
+```
 ---
 
 ### Game Container
