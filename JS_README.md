@@ -12,6 +12,7 @@
 - Dynamic UI with light/dark themes
 - Animated planet click effect
 - Real-time clock and total time tracker
+- Real time search and History along with Regex are not included in the Javascript
 
 ## How to Play
 
@@ -33,6 +34,7 @@
 - **JavaScript**: Game logic, state management, animations
 - **LocalStorage API**: Save/load game data persistently
 - **Google Fonts**: Custom typography
+- **Reliable Comments**: I have comments that give a small explanation to what to functions do
 
 ---
 ## JavaScript
@@ -176,6 +178,7 @@ let totalSuperUpgrade1amount = 0
 let totalSuperUpgrade2amount = 0
 ```
 This initalizes any value that need to be defined in order to use if statments and the save and load function change some of these value initially to keep your progress
+This is how I use Variable Naming & indentation
 
 ## Basic funtions that are utilized constantly
 ```
@@ -625,8 +628,10 @@ These are used to select, change, and alter certian parts of every element
 - Select and unselect are used to indicate which upgrade you hover over and is Green if purchasable
 - Display and Pops array is used to change the alert box
 - Open/Close upgrades and inventory is used to set the elements as hidden and flex
-- Click indication and Click plus one are used to tell wether the Img was clicked and to diplay a +1 temporarily if it was
-- Clock and total time spent are timer funtions that collect the general time and how long you spent on the browser
+- Click indication and Click plus one are used to tell wether the Img was clicked and to diplay a +1 temporarily if it was which uses math.random to randomly select a place inside the Left-container-inners to display the +1
+- Clock and total time spent are timer funtions that collect the general time and how long you spent on the browser using Timer and date Object
+
+This is how I properly use function naming and Modulatiry, Arrays and Objects Ussage, Array methods such as pop and unpush, Looing and iteration with If and for statements
 
   ## Theme Changer
   ```
@@ -698,6 +703,7 @@ These are used to select, change, and alter certian parts of every element
 }
 ```
 This is used to change the theme to a more eye appealing when you get tired of if it is late outside and it saves your preference when you reload
+This is How I do DOM and CSS manipulation along with the theme prefrence
 
 ## Save Load and Delete
 ```
@@ -857,6 +863,7 @@ function deleteAll() {
 }
 ```
 These three are used to collect, return, and delete your progress accross browsers and persists even when you close the game
+This is how I use JSON Data Handling, Web Storage, Saving and retriving user data, I collet the users name with a cookie that has an expiry date
 
 ## Basic Upgrades
 ```
@@ -988,69 +995,77 @@ function rebirth(){
 }
 //Resets every value that is used
 function resetNum(){
-    console.log("Reset Numbers")
-    CostFirst = 10
-    CostSecond = 25
-    CostThird = 50
-    CostFourth = 1000
-    CostFifth = 2500
-    CostSixth = 10000
-    CostSeventh = 20000
-    CostEighth = 40000
-    CostNinth = 60000
-    totalUpgrade1amount = 0
-    totalUpgrade2amount = 0
-    totalUpgrade3amount = 0
-    totalUpgrade4amount = 0
-    totalUpgrade5amount = 0
-    totalUpgrade6amount = 0
-    totalUpgrade7amount = 0
-    totalUpgrade8amount = 0
-    totalUpgrade9amount = 0
-    totalSuperUpgrade1amount = 0
-    totalSuperUpgrade2amount = 0
+    try{
+        console.log("Reset Numbers")
+        CostFirst = 10
+        CostSecond = 25
+        CostThird = 50
+        CostFourth = 1000
+        CostFifth = 2500
+        CostSixth = 10000
+        CostSeventh = 20000
+        CostEighth = 40000
+        CostNinth = 60000
+        totalUpgrade1amount = 0
+        totalUpgrade2amount = 0
+        totalUpgrade3amount = 0
+        totalUpgrade4amount = 0
+        totalUpgrade5amount = 0
+        totalUpgrade6amount = 0
+        totalUpgrade7amount = 0
+        totalUpgrade8amount = 0
+        totalUpgrade9amount = 0
+        totalSuperUpgrade1amount = 0
+        totalSuperUpgrade2amount = 0
 
-    cash = 0
-    multiplier = 1
-    additionalClicks = 0
-    autoClickTimer = 1000
-    CCurrentClickValue = ((1 + additionalClicks) * multiplier) * (1 + (totalRebriths))
-    if (intervalId1) {
-        clearInterval(intervalId1);
-        clearInterval(autoClick3)
+        cash = 0
+        multiplier = 1
+        additionalClicks = 0
+        autoClickTimer = 1000
+        CCurrentClickValue = ((1 + additionalClicks) * multiplier) * (1 + (totalRebriths))
+        if (intervalId1) {
+            clearInterval(intervalId1);
+            clearInterval(autoClick3)
 
-        intervalId1 = null; // optional: reset the variable
-      }
-      if (intervalId2) {
-        clearInterval(intervalId2);
+            intervalId1 = null; // optional: reset the variable
+        }
+        if (intervalId2) {
+            clearInterval(intervalId2);
+        }
+        if (intervalId3) {
+            clearInterval(intervalId3);
+            clearInterval(autoClick3)
+            intervalId3 = null; // optional: reset the variable
+        }
+        // for(i = 0; i < maxAutoClickers1; i++){clearInterval(intervalId1)}
+        // for(i = 0; i < maxAutoClickers2; i++){clearInterval(intervalId2)}
+        // for(i = 0; i < maxAutoClickers3; i++){clearInterval(intervalId3)}
+        maxAutoClickers1 = 0
+        maxAutoClickers2 = 0
+        maxAutoClickers3 = 0
+        // intervalId1 = null
+        // intervalId2 = null
+        // intervalId3 = null
+
+        FirstCost.textContent = `Cost:$${addThousandSeparators(CostFirst)}`
+        SecondCost.textContent = `Cost:$${addThousandSeparators(CostSecond)}`
+        ThirdCost.textContent = `Cost:$${addThousandSeparators(CostThird)}`
+        FourthCost.textContent = `Cost:$${addThousandSeparators(CostFourth)}`
+        FifthCost.textContent = `Cost:$${addThousandSeparators(CostFifth)}`
+        SixthCost.textContent = `Cost:$${addThousandSeparators(CostSixth)}`
+        SeventhCost.textContent = `Cost:$${addThousandSeparators(Math.floor(CostSeventh))}`
+        EighthCost.textContent = `Cost:$${addThousandSeparators(Math.floor(CostEighth))}`
+        NinthCost.textContent = `Cost:$${addThousandSeparators(Math.floor(CostNinth))}`
+        
+    } catch(e){
+        console.error(e)
+        console.error("Numbers failed to reset")
     }
-      if (intervalId3) {
-        clearInterval(intervalId3);
-        clearInterval(autoClick3)
-        intervalId3 = null; // optional: reset the variable
-      }
-    // for(i = 0; i < maxAutoClickers1; i++){clearInterval(intervalId1)}
-    // for(i = 0; i < maxAutoClickers2; i++){clearInterval(intervalId2)}
-    // for(i = 0; i < maxAutoClickers3; i++){clearInterval(intervalId3)}
-    maxAutoClickers1 = 0
-    maxAutoClickers2 = 0
-    maxAutoClickers3 = 0
-    // intervalId1 = null
-    // intervalId2 = null
-    // intervalId3 = null
-
-    FirstCost.textContent = `Cost:$${addThousandSeparators(CostFirst)}`
-    SecondCost.textContent = `Cost:$${addThousandSeparators(CostSecond)}`
-    ThirdCost.textContent = `Cost:$${addThousandSeparators(CostThird)}`
-    FourthCost.textContent = `Cost:$${addThousandSeparators(CostFourth)}`
-    FifthCost.textContent = `Cost:$${addThousandSeparators(CostFifth)}`
-    SixthCost.textContent = `Cost:$${addThousandSeparators(CostSixth)}`
-    SeventhCost.textContent = `Cost:$${addThousandSeparators(Math.floor(CostSeventh))}`
-    EighthCost.textContent = `Cost:$${addThousandSeparators(Math.floor(CostEighth))}`
-    NinthCost.textContent = `Cost:$${addThousandSeparators(Math.floor(CostNinth))}`
 }
 ```
 The rebirth funtion clears all the inital values with the reset funtion and gives you + 1 rebirth which applies a global x1 multiplier
+The reset function uses try and catch to determine what is being interacted with while rebirth happens and caling the error in the console log
+Everytime an upgrade is interacted with it pushes a new item into the Alerts array to display it in the middle-Container-inners alerts box
 
 ## All the super upgrades
 ```
