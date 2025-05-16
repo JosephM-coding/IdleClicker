@@ -6,7 +6,7 @@ The `styles.css` file provides the complete styling for a web-based clicker game
 
 ---
 
-### 🌍 Global Styles
+### Global Styles
 
 #### Reset and Root Theme
 
@@ -42,7 +42,7 @@ body {
 
 ---
 
-### 🧭 Navigation Bar
+### Navigation Bar
 
 ```css
 .navBar {
@@ -60,7 +60,7 @@ body {
 
 ---
 
-### 🎮 Game Layout
+### Game Layout
 
 #### Grid Container
 
@@ -78,7 +78,7 @@ body {
 
 ---
 
-### 🔻 Left Panel (`.left-container`)
+### Left Panel (`.left-container`)
 
 ```css
 .left-container {
@@ -107,7 +107,7 @@ body {
 
 ---
 
-### ⚙️ Middle Panel (`.middle-container`)
+###  Middle Panel (`.middle-container`)
 
 ```css
 .middle-container {
@@ -133,7 +133,7 @@ body {
 
 ---
 
-### 🚀 Right Panel (`.right-container`)
+### Right Panel (`.right-container`)
 
 ```css
 .right-container {
@@ -155,7 +155,7 @@ body {
 
 ---
 
-### 🎨 Animations & Effects
+### Animations & Effects
 
 ```css
 @keyframes tilt {
@@ -177,7 +177,7 @@ body {
 
 ---
 
-### 🧩 Modals (`.Inventory`, `.Upgrades`)
+### Modals (`.Inventory`, `.Upgrades`)
 
 ```css
 .Inventory, .Upgrades {
@@ -196,7 +196,7 @@ body {
 
 ---
 
-### 📱 Responsive Design
+### Responsive Design
 
 ```css
 @media screen and (max-width: 772px) {
@@ -213,7 +213,7 @@ body {
 
 ---
 
-### 📚 Utility Classes
+### Utility Classes
 
 ```css
 .hidden {
@@ -234,7 +234,7 @@ body {
 
 ---
 
-### 🔤 Fonts & Links
+### Fonts & Links
 
 ```css
 .LinkClass {
