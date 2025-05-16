@@ -1155,8 +1155,8 @@ function discount(){
     callAllCostValues() 
 }
 ```
-- The first super upgrade is the same as the first but instead of +1 its +300 clicks
-- The second super upgrade is the same as the second but instead of +.2 multiplier its +100
+- The first super upgrade is the same as the first upgrade but instead of +1 its +300 clicks
+- The second super upgrade is the same as the second upgrade but instead of +.2 multiplier its +100
 -The third upgrades utilized the discount function and divides every upgrade by 10 making it easier to get futher into the game
 - The Fourth super upgrade utilized the findpart() function and gives you a random part everytime and makes it more common to get the parts you dont have 10 of
 - The Fifth Super upgrade is how you win the game, if you have 5 rebirths and 10 of each part along with the money requirement you build a ship and complete the game gaining the ability to have inf money
